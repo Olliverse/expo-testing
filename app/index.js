@@ -1,11 +1,11 @@
 import {StatusBar} from "expo-status-bar";
 import {StyleSheet, View} from "react-native";
 
-import Button from './components/defaults/Button';
-import ImageViewer from './components/ImageViewer';
-import Accelerator from "./components/native-components/Accelerator";
+import Button from '../components/defaults/Button';
+import ImageViewer from '../components/ImageViewer';
+import Accelerator from "../components/native-components/Accelerator";
 
-const BACKGROUND_IMAGE = require("./assets/images/alipepe.png");
+const BACKGROUND_IMAGE = require("../assets/images/alipepe.png");
 
 export default function App() {
     return (
@@ -21,7 +21,7 @@ export default function App() {
                 <Button label="Choose a photo" theme={"primary"}/>
                 <Button label="Use this photo" theme={"primary"} style={{marginTop: 5}}/>
             </View>
-            M
+
             <View style={styles.innerContainer}>
                 <Accelerator/>
             </View>
