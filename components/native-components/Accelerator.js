@@ -20,7 +20,9 @@ export default function Accelerator() {
     };
 
     const _unsubscribe = () => {
-        subscription && subscription.remove();
+        if (subscription) {
+            subscription.remove();
+        }
         setSubscription(null);
     };
 
@@ -44,8 +46,7 @@ export default function Accelerator() {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: '#25292e',
+        display: "flex",
         alignItems: 'center',
     },
     text: {

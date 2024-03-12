@@ -1,9 +1,12 @@
 import {StatusBar} from "expo-status-bar";
-import {StyleSheet, View} from "react-native";
+import {Dimensions, StyleSheet, View} from "react-native";
+import {Link} from "expo-router";
+import React from "react";
 
 import Button from '../components/defaults/Button';
 import ImageViewer from '../components/ImageViewer';
 import Accelerator from "../components/native-components/Accelerator";
+import SwipeableView from "../components/native-components/SwipeableView";
 
 const BACKGROUND_IMAGE = require("../assets/images/alipepe.png");
 
@@ -11,20 +14,25 @@ export default function App() {
     return (
         <View style={styles.mainContainer}>
             {/*TODO: StatusBar props genauer anschauen _> animated, etc.*/}
-            <StatusBar style="auto" hidden={true}/>
+            <StatusBar style="auto"/>
 
-            <View style={styles.innerContainer}>
-                <ImageViewer placeholderImageSource={BACKGROUND_IMAGE}/>
-            </View>
+            <SwipeableView>
+                <View style={styles.innerContainer}>
+                    <ImageViewer placeholderImageSource={BACKGROUND_IMAGE}/>
+                    <Button label="Choose a photo" theme={"primary"} style={{marginTop: 5}}/>
+                    <Button label="Use this photo" theme={"primary"} style={{marginTop: 5}}/>
+                </View>
 
-            <View style={styles.innerContainer}>
-                <Button label="Choose a photo" theme={"primary"}/>
-                <Button label="Use this photo" theme={"primary"} style={{marginTop: 5}}/>
-            </View>
+                <View style={styles.innerContainer}>
+                    <Accelerator/>
+                </View>
 
-            <View style={styles.innerContainer}>
-                <Accelerator/>
-            </View>
+                <View style={styles.innerContainer}>
+                    <Link href="/test" asChild>
+                        <Button label="Weg hier" theme={"primary"} style={{marginTop: 5}}/>
+                    </Link>
+                </View>
+            </SwipeableView>
         </View>
     );
 }
@@ -40,6 +48,8 @@ const styles = StyleSheet.create({
     innerContainer: {
         display: "flex",
         alignItems: 'center',
-        marginTop: 10,
+        justifyContent: 'center',
+        width: Dimensions.get('window').width,
+        height: '100%'
     },
 });
