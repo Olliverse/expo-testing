@@ -1,5 +1,5 @@
 import {StatusBar} from "expo-status-bar";
-import React, {useState} from 'react';
+import {useState} from 'react';
 import {StyleSheet, TextInput, View} from "react-native";
 import {router} from "expo-router";
 import Button from "../../components/defaults/Button";

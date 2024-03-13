@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {Accelerometer} from 'expo-sensors';
 import MiniButton from "../defaults/MiniButton";

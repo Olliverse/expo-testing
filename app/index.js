@@ -1,7 +1,6 @@
 import {StatusBar} from "expo-status-bar";
 import {Dimensions, StyleSheet, View} from "react-native";
 import {Link} from "expo-router";
-import React from "react";
 
 import Button from '../components/defaults/Button';
 import ImageViewer from '../components/ImageViewer';
@@ -11,9 +10,10 @@ import SwipeableView from "../components/native-components/SwipeableView";
 const BACKGROUND_IMAGE = require("../assets/images/alipepe.png");
 
 export default function App() {
+
     return (
         <View style={styles.mainContainer}>
-            {/*TODO: StatusBar props genauer anschauen _> animated, etc.*/}
+            { /* TODO: StatusBar props genauer anschauen _> animated, etc. */}
             <StatusBar style="auto"/>
 
             <SwipeableView>
