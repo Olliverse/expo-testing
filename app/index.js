@@ -5,7 +5,7 @@ import {Link} from "expo-router";
 import Button from '../components/defaults/Button';
 import ImageViewer from '../components/ImageViewer';
 import Accelerator from "../components/native-components/Accelerator";
-import SwipeableView from "../components/native-components/SwipeableView";
+import SwipeableView from "../components/native-components/swipable-view/SwipeableView";
 
 const BACKGROUND_IMAGE = require("../assets/images/alipepe.png");
 
@@ -32,13 +32,17 @@ export default function App() {
                     </Link>
                 </View>
 
-                {/*<View style={styles.innerContainer}>*/}
-                {/*    <Button label="just a button" theme={"primary"} style={{marginTop: 5}}/>*/}
-                {/*</View>*/}
+                <View style={styles.innerContainer}>
+                    <Button label="just a button" theme={"primary"} style={{marginTop: 5}}/>
+                </View>
 
-                {/*<View style={styles.innerContainer}>*/}
-                {/*    <Button label="just a button" theme={"primary"} style={{marginTop: 5}}/>*/}
-                {/*</View>*/}
+                <View style={styles.innerContainer}>
+                    <Button label="just a button" theme={"primary"} style={{marginTop: 5}}/>
+                </View>
+
+                <View style={styles.innerContainer}>
+                    <Button label="just a button" theme={"primary"} style={{marginTop: 5}}/>
+                </View>
             </SwipeableView>
         </View>
     );

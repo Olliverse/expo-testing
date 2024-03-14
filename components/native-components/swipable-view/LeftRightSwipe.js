@@ -1,41 +1,29 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {Animated, Dimensions, StyleSheet} from 'react-native';
 import {Gesture, GestureDetector, GestureHandlerRootView, PanGestureHandler, State} from 'react-native-gesture-handler';
 
-const SwipeableView = ({children}) => {
+const LeftRightSwipe = ({children, currentPage, setCurrentPage, offset}) => {
+    console.log("children.length")
+    console.log(children.length)
+    console.log("children")
+    console.log(children)
     const {width} = Dimensions.get('window');
     const pan = Gesture.Pan()
 
-    const [curPage, setCurPage] = useState(1);
     const [translateX, setTranslateX] = useState(0);
     const translateXRef = useRef(new Animated.Value(translateX)).current;
 
-    useEffect(() => {
-        console.log("page: " + curPage)
-    }, [curPage]);
-
     pan.onChange(({translationX}) => {
-        const trans = translationX + curPage * width
+        const trans = translationX + offset * width
         translateXRef.setValue(trans)
         setTranslateX(trans)
     })
 
     pan.onEnd(() => {
-        const updatePage = () => {
-            if (translateX < 0) {
-                if (curPage < children.length) {
-                    setCurPage(curPage + 1);
-                    return true;
-                }
-            } else if (curPage > 1) {
-                setCurPage(curPage - 1);
-                return true;
-            }
-        }
-
         const performSwipe = () => {
             const swipeDistance = Math.abs(translateX);
-            if (swipeDistance > width / 2 && updatePage()) {
+            if (swipeDistance > width / 3) {
+                translateX < 0 ?  setCurrentPage(currentPage - 1) : setCurrentPage(currentPage + 1)
                 Animated.timing(translateXRef, {
                     toValue: translateX < 0 ?  -width : width,
                     duration: 200,
@@ -85,4 +73,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default SwipeableView;
+export default LeftRightSwipe;
