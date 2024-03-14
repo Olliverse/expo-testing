@@ -1,51 +1,64 @@
-import React, {useRef, useState} from 'react';
-import { StyleSheet, Animated, Dimensions } from 'react-native';
+import React, {useEffect, useRef, useState} from 'react';
+import {Animated, Dimensions, StyleSheet} from 'react-native';
 import {GestureHandlerRootView, PanGestureHandler, State} from 'react-native-gesture-handler';
 
-
 const SwipeableView = ({children}) => {
-    const [curPage, setCurPage] = useState(1);
-    const panGestureHandler = useRef(null);
-    const translateX = useRef(new Animated.Value(0)).current;
+    const {width} = Dimensions.get('window');
 
-    const { width } = Dimensions.get('window');
+    const [curPage, setCurPage] = useState(1);
+
+    const panGestureHandler = useRef(null);
+    const translateX = useRef(new Animated.Value(width)).current;
+
+    const translateXCopy = useRef(null);
+    translateXCopy.current = {...translateX}
+
+    console.log("translateX", translateX)
+    console.log("translateXCopy", translateXCopy.current)
 
     const onGestureEvent = Animated.event(
-        [{ nativeEvent: { translationX: translateX } }],
-        { useNativeDriver: true }
+        [{nativeEvent: {translationX: translateX}}],
+        {useNativeDriver: true}
     );
 
-    const updatePage = (translationX) => {
-        if (translationX > 0) {
-            if (curPage < children.length) {
-                setCurPage(curPage + 1);
-            }
-        } else {
-            if (curPage > 1) {
+    useEffect(() => {
+        console.log("page: " + curPage)
+    }, [curPage]);
+
+    const onHandlerStateChange = ({nativeEvent}) => {
+
+        const updatePage = (translationX) => {
+            if (translationX < 0) {
+                if (curPage < children.length) {
+                    setCurPage(curPage + 1);
+                    return true;
+                }
+            } else if (curPage > 1) {
                 setCurPage(curPage - 1);
+                return true;
             }
         }
-    }
 
-    const onHandlerStateChange = ({ nativeEvent }) => {
-        console.log(curPage)
-        if (nativeEvent.state === State.END) {
+        function performSwipe() {
             const swipeDistance = Math.abs(nativeEvent.translationX);
-            if (swipeDistance > width / 3) {
-                updatePage(nativeEvent.translationX);
-                nativeEvent.translationX > 0 ? console.log("Swipe right") : console.log("Swipe left")
+            if (swipeDistance > width / 2 && updatePage(nativeEvent.translationX)) {
                 Animated.timing(translateX, {
-                    toValue: nativeEvent.translationX > 0 ? width * curPage : (width * curPage) - width,
+                    toValue: nativeEvent.translationX < 0 ?  -width : width,
                     duration: 200,
                     useNativeDriver: true
                 }).start();
-            } else {
-                Animated.spring(translateX, {
-                    toValue: curPage,
-                    bounciness: 15,
-                    useNativeDriver: true
-                }).start();
+                return;
             }
+
+            Animated.spring(translateX, {
+                toValue: 0,
+                bounciness: 15,
+                useNativeDriver: true
+            }).start();
+        }
+
+        if (nativeEvent.state === State.END) {
+            performSwipe();
         }
     };
 
@@ -59,7 +72,8 @@ const SwipeableView = ({children}) => {
                     style={[
                         styles.swipeContainer,
                         {
-                            transform: [{ translateX: translateX }],
+                            // transform: [{translateX: Animated.subtract(Animated.add(translateX, width), width * (curPage - 1))}],
+                            transform: [{translateX: translateX}],
                             width: `${children.length ? children.length : 1}00%`
                         }
                     ]}>

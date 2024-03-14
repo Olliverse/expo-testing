@@ -10,7 +10,6 @@ import SwipeableView from "../components/native-components/SwipeableView";
 const BACKGROUND_IMAGE = require("../assets/images/alipepe.png");
 
 export default function App() {
-
     return (
         <View style={styles.mainContainer}>
             { /* TODO: StatusBar props genauer anschauen _> animated, etc. */}
@@ -28,10 +27,18 @@ export default function App() {
                 </View>
 
                 <View style={styles.innerContainer}>
-                    <Link href="/test" asChild>
+                    <Link href="/test">
                         <Button label="Weg hier" theme={"primary"} style={{marginTop: 5}}/>
                     </Link>
                 </View>
+
+                {/*<View style={styles.innerContainer}>*/}
+                {/*    <Button label="just a button" theme={"primary"} style={{marginTop: 5}}/>*/}
+                {/*</View>*/}
+
+                {/*<View style={styles.innerContainer}>*/}
+                {/*    <Button label="just a button" theme={"primary"} style={{marginTop: 5}}/>*/}
+                {/*</View>*/}
             </SwipeableView>
         </View>
     );
@@ -50,6 +57,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         width: Dimensions.get('window').width,
+        // width: '100%',
         height: '100%'
     },
 });

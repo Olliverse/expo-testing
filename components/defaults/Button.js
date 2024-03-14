@@ -5,35 +5,23 @@ function defaultFunc(label) {
     alert(`"${label}" pressed.`)
 }
 
-export default function Button({label, theme, style, onPress, callbackVars}) {
-    // if (theme === "primary") {
-        return (
-            <View style={[style, styles.buttonContainer, {borderWidth: 4, borderColor: "#b3b3b3", borderRadius: 18}]}>
-                <Pressable
-                    style={[styles.button, {backgroundColor: "#fff"}]}
-                    onPress={() => callbackVars ? onPress(callbackVars) : (onPress ? onPress() : defaultFunc(label))}
-                >
-                    <FontAwesome
-                        name="picture-o"
-                        size={18}
-                        color="#25292e"
-                        style={styles.buttonIcon}
-                    />
-                    <Text style={[styles.buttonLabel, {color: "#25292e"}]}>{label}</Text>
-                </Pressable>
-            </View>
-        );
-    // }
-
-    // return (
-    //     <View style={styles.buttonContainer}>
-    //         <Pressable style={styles.button}
-    //                    onPress={() => callbackVars ? callback(callbackVars) : (onPress ? onPress() : defaultFunc(label))}
-    //         >
-    //             <Text style={styles.buttonLabel}>{label}</Text>
-    //         </Pressable>
-    //     </View>
-    // );
+export default function Button({label, style, onPress, callbackVars}) {
+    return (
+        <View style={[style, styles.buttonContainer, {borderWidth: 4, borderColor: "#b3b3b3", borderRadius: 18}]}>
+            <Pressable
+                style={[styles.button, {backgroundColor: "#fff"}]}
+                onPress={() => callbackVars ? onPress(callbackVars) : (onPress ? onPress() : defaultFunc(label))}
+            >
+                <FontAwesome
+                    name="picture-o"
+                    size={18}
+                    color="#25292e"
+                    style={styles.buttonIcon}
+                />
+                <Text style={[styles.buttonLabel, {color: "#25292e"}]}>{label}</Text>
+            </Pressable>
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({
