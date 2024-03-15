@@ -1,50 +1,38 @@
 import React, {useEffect, useState} from 'react';
-import {Dimensions, StyleSheet, View} from 'react-native';
+import {Dimensions, StyleSheet, Text, View} from 'react-native';
 import LeftRightSwipe from "./LeftRightSwipe";
 
 
-const getSubChildren = (children, curPage) => {
-    console.log(`getSubChildren for page ${curPage} all childs ${children.length}`)
-    if (curPage > 1 && curPage < children.length) {
-        console.log("slicing")
-        return children.slice(curPage - 2, curPage);
-    } else if (curPage === 1) {
-        console.log("add empty at start")
-        return children.length > 1 ?
-            [EmptyTemplateView(), children[0], children[1]]
-            :
-            [EmptyTemplateView(), children[0], EmptyTemplateView()];
-    } else if (curPage === children.length) {
-        console.log("add empty at end")
-        return children.length > 1 ?
-            [children[children.length - 2], children[children.length - 1], EmptyTemplateView()]
-            :
-            [EmptyTemplateView(), children[0], EmptyTemplateView()];
+const getSubChildren = (children, currentPage) => {
+    if (currentPage > 1 && currentPage < children.length) {
+        return [children[currentPage-2], children[currentPage-2], children[currentPage]];
+    } else if (currentPage === 1) {
+        return [EmptyTemplateView(0), children[0], children[1]]
+    } else if (currentPage === children.length) {
+        return [children[children.length - 2], children[children.length - 1], EmptyTemplateView(2)];
     } else {
-        console.log("all empty")
-        return [EmptyTemplateView(), EmptyTemplateView(), EmptyTemplateView()];
+        return [EmptyTemplateView(0), EmptyTemplateView(1), EmptyTemplateView(2)];
     }
 }
 
-const initial = (children, curPage) => {
-    console.log("init thing is called")
-    return getSubChildren(children, curPage)
+const getInitialSubChildren = (children, currentPage) => {
+    // console.log("init")
+    return getSubChildren(children, currentPage);
 }
 
-const EmptyTemplateView = () => {
-    return (<View style={styles.emptyTemplate}></View>)
+const EmptyTemplateView = (id) => {
+    return (<View style={styles.emptyTemplate} key={id}><Text>{id}</Text></View>)
 }
 
 const SwipeableView = ({children}) => {
     const childrenArray = React.Children.toArray(children)
     const [currentPage, setCurrentPage] = useState(1);
-    const [childrenToRender, setChildrenToRender] = useState(initial(childrenArray, currentPage));
+    const [childrenToRender, setChildrenToRender] = useState(getInitialSubChildren(childrenArray, currentPage));
 
-    // useEffect(() => {
-    //     // TODO:
-    //     setChildrenToRender(getSubChildren(childrenArray, currentPage));
-    //     console.log("Looping?")
-    // }, [currentPage]);
+    useEffect(() => {
+        setChildrenToRender(getSubChildren(childrenArray, currentPage));
+        console.log(currentPage)
+    }, [currentPage]);
 
     return (
         <LeftRightSwipe

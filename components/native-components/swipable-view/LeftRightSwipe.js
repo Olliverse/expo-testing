@@ -1,19 +1,13 @@
-import React, {useRef, useState} from 'react';
+import React, {useRef} from 'react';
 import {Animated, Dimensions, StyleSheet} from 'react-native';
 import {Gesture, GestureDetector, GestureHandlerRootView} from 'react-native-gesture-handler';
 
 const LeftRightSwipe = ({children, overallChildrenCount, currentPage, setCurrentPage}) => {
-    if (children.length !== 3) {
-        console.warn("No 3 children in Swipable View:" + children.length)
-        return
-    }
-
     const {width} = Dimensions.get('window');
     const pan = Gesture.Pan()
-    const [translation, setTranslation] = useState(0);
-    const translateRef = useRef(new Animated.Value(translation)).current;
+    const translateRef = useRef(new Animated.Value(0)).current;
 
-    const updateCurrentPage = () => {
+    const updateCurrentPage = (translation) => {
         if (translation < 0) {
             if (currentPage < overallChildrenCount) {
                 console.log("Forward")
@@ -34,7 +28,7 @@ const LeftRightSwipe = ({children, overallChildrenCount, currentPage, setCurrent
 
     const swipeAnimation = () => {
         Animated.timing(translateRef, {
-            toValue: translation < 0 ? -width : width,
+            toValue: translateRef < 0 ? -width : width,
             duration: 200,
             useNativeDriver: true
         }).start();
@@ -50,12 +44,11 @@ const LeftRightSwipe = ({children, overallChildrenCount, currentPage, setCurrent
 
     pan.onChange(({translationX}) => {
         translateRef.setValue(translationX)
-        setTranslation(translationX)
     })
 
-    pan.onEnd(() => {
-        const swipeDistance = Math.abs(translation);
-        if (swipeDistance > width / 3 && updateCurrentPage()) {
+    pan.onEnd(({translationX}) => {
+        const swipeDistance = Math.abs(translationX);
+        if (swipeDistance > width / 3 && updateCurrentPage(translationX)) {
             swipeAnimation();
         } else {
             drawbackAnimation();
