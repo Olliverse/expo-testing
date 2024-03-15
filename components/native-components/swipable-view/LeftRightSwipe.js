@@ -1,44 +1,65 @@
 import React, {useRef, useState} from 'react';
 import {Animated, Dimensions, StyleSheet} from 'react-native';
-import {Gesture, GestureDetector, GestureHandlerRootView, PanGestureHandler, State} from 'react-native-gesture-handler';
+import {Gesture, GestureDetector, GestureHandlerRootView} from 'react-native-gesture-handler';
 
-const LeftRightSwipe = ({children, currentPage, setCurrentPage, offset}) => {
-    console.log("children.length")
-    console.log(children.length)
-    console.log("children")
-    console.log(children)
+const LeftRightSwipe = ({children, overallChildrenCount, currentPage, setCurrentPage}) => {
+    if (children.length !== 3) {
+        console.warn("No 3 children in Swipable View:" + children.length)
+        return
+    }
+
     const {width} = Dimensions.get('window');
     const pan = Gesture.Pan()
+    const [translation, setTranslation] = useState(0);
+    const translateRef = useRef(new Animated.Value(translation)).current;
 
-    const [translateX, setTranslateX] = useState(0);
-    const translateXRef = useRef(new Animated.Value(translateX)).current;
+    const updateCurrentPage = () => {
+        if (translation < 0) {
+            if (currentPage < overallChildrenCount) {
+                console.log("Forward")
+                setCurrentPage(currentPage + 1);
+                return true;
+            }
+            console.log("Cannot go more forward")
+        } else {
+            if (currentPage > 1) {
+                console.log("Backward")
+                setCurrentPage(currentPage - 1);
+                return true;
+            }
+            console.log("Cannot go more backward")
+        }
+        return false;
+    }
+
+    const swipeAnimation = () => {
+        Animated.timing(translateRef, {
+            toValue: translation < 0 ? -width : width,
+            duration: 200,
+            useNativeDriver: true
+        }).start();
+    }
+
+    const drawbackAnimation = () => {
+        Animated.spring(translateRef, {
+            toValue: 0,
+            bounciness: 15,
+            useNativeDriver: true
+        }).start();
+    }
 
     pan.onChange(({translationX}) => {
-        const trans = translationX + offset * width
-        translateXRef.setValue(trans)
-        setTranslateX(trans)
+        translateRef.setValue(translationX)
+        setTranslation(translationX)
     })
 
     pan.onEnd(() => {
-        const performSwipe = () => {
-            const swipeDistance = Math.abs(translateX);
-            if (swipeDistance > width / 3) {
-                translateX < 0 ?  setCurrentPage(currentPage - 1) : setCurrentPage(currentPage + 1)
-                Animated.timing(translateXRef, {
-                    toValue: translateX < 0 ?  -width : width,
-                    duration: 200,
-                    useNativeDriver: true
-                }).start();
-                return;
-            }
-
-            Animated.spring(translateXRef, {
-                toValue: 0,
-                bounciness: 15,
-                useNativeDriver: true
-            }).start();
+        const swipeDistance = Math.abs(translation);
+        if (swipeDistance > width / 3 && updateCurrentPage()) {
+            swipeAnimation();
+        } else {
+            drawbackAnimation();
         }
-        performSwipe();
     })
 
     return (
@@ -48,8 +69,8 @@ const LeftRightSwipe = ({children, currentPage, setCurrentPage, offset}) => {
                     style={[
                         styles.swipeContainer,
                         {
-                            transform: [{translateX: translateXRef}],
-                            width: `${children.length ? children.length : 1}00%`
+                            transform: [{translateX: translateRef}],
+                            width: "300%"
                         }
                     ]}>
                     {children}

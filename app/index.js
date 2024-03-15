@@ -35,14 +35,6 @@ export default function App() {
                 <View style={styles.innerContainer}>
                     <Button label="just a button" theme={"primary"} style={{marginTop: 5}}/>
                 </View>
-
-                <View style={styles.innerContainer}>
-                    <Button label="just a button" theme={"primary"} style={{marginTop: 5}}/>
-                </View>
-
-                <View style={styles.innerContainer}>
-                    <Button label="just a button" theme={"primary"} style={{marginTop: 5}}/>
-                </View>
             </SwipeableView>
         </View>
     );
@@ -61,7 +53,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         width: Dimensions.get('window').width,
-        // width: '100%',
         height: '100%'
     },
 });
