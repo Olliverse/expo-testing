@@ -5,7 +5,7 @@ import {Link} from "expo-router";
 import Button from '../components/defaults/Button';
 import ImageViewer from '../components/ImageViewer';
 import Accelerator from "../components/native-components/Accelerator";
-import SwipeableView from "../components/native-components/SwipeableView";
+import SwipeableView from "../components/defaults/SwipeableView";
 
 const ALI_PEPE_IMAGE = require("../assets/images/alipepe.png");
 const RARE_PEPE_IMAGE = require("../assets/images/rarepepe.png");
@@ -28,7 +28,7 @@ export default function App() {
                 </View>
 
                 <View style={[styles.innerContainer, {backgroundColor: "#969696"}]}>
-                    <Link href="/test">
+                    <Link href="/test" asChild={true}>
                         <Button label="Weg hier" theme={"primary"} style={{marginTop: 5}}/>
                     </Link>
                 </View>
