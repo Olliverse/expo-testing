@@ -5,7 +5,7 @@ import {Link} from "expo-router";
 import Button from '../components/defaults/Button';
 import ImageViewer from '../components/ImageViewer';
 import Accelerator from "../components/native-components/Accelerator";
-import SwipeableView from "../components/native-components/swipable-view/SwipeableView";
+import SwipeableView from "../components/native-components/SwipeableView";
 
 const BACKGROUND_IMAGE = require("../assets/images/alipepe.png");
 
@@ -16,23 +16,23 @@ export default function App() {
             <StatusBar style="auto"/>
 
             <SwipeableView>
-                <View style={styles.innerContainer}>
+                <View style={[styles.innerContainer, {backgroundColor: "red"}]}>
                     <ImageViewer placeholderImageSource={BACKGROUND_IMAGE}/>
                     <Button label="Choose a photo" theme={"primary"} style={{marginTop: 5}}/>
                     <Button label="Use this photo" theme={"primary"} style={{marginTop: 5}}/>
                 </View>
 
-                <View style={styles.innerContainer}>
+                <View style={[styles.innerContainer, {backgroundColor: "blue"}]}>
                     <Accelerator/>
                 </View>
 
-                <View style={styles.innerContainer}>
+                <View style={[styles.innerContainer, {backgroundColor: "green"}]}>
                     <Link href="/test">
                         <Button label="Weg hier" theme={"primary"} style={{marginTop: 5}}/>
                     </Link>
                 </View>
 
-                <View style={styles.innerContainer}>
+                <View style={[styles.innerContainer, {backgroundColor: "yellow"}]}>
                     <Button label="just a button" theme={"primary"} style={{marginTop: 5}}/>
                 </View>
             </SwipeableView>
