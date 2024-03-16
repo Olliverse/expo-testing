@@ -7,7 +7,8 @@ import ImageViewer from '../components/ImageViewer';
 import Accelerator from "../components/native-components/Accelerator";
 import SwipeableView from "../components/native-components/SwipeableView";
 
-const BACKGROUND_IMAGE = require("../assets/images/alipepe.png");
+const ALI_PEPE_IMAGE = require("../assets/images/alipepe.png");
+const RARE_PEPE_IMAGE = require("../assets/images/rarepepe.png");
 
 export default function App() {
     return (
@@ -16,24 +17,24 @@ export default function App() {
             <StatusBar style="auto"/>
 
             <SwipeableView>
-                <View style={[styles.innerContainer, {backgroundColor: "red"}]}>
-                    <ImageViewer placeholderImageSource={BACKGROUND_IMAGE}/>
+                <View style={[styles.innerContainer, {backgroundColor: "#969696"}]}>
+                    <ImageViewer placeholderImageSource={ALI_PEPE_IMAGE}/>
                     <Button label="Choose a photo" theme={"primary"} style={{marginTop: 5}}/>
                     <Button label="Use this photo" theme={"primary"} style={{marginTop: 5}}/>
                 </View>
 
-                <View style={[styles.innerContainer, {backgroundColor: "blue"}]}>
+                <View style={[styles.innerContainer, {backgroundColor: "#b1b1b1"}]}>
                     <Accelerator/>
                 </View>
 
-                <View style={[styles.innerContainer, {backgroundColor: "green"}]}>
+                <View style={[styles.innerContainer, {backgroundColor: "#969696"}]}>
                     <Link href="/test">
                         <Button label="Weg hier" theme={"primary"} style={{marginTop: 5}}/>
                     </Link>
                 </View>
 
-                <View style={[styles.innerContainer, {backgroundColor: "yellow"}]}>
-                    <Button label="just a button" theme={"primary"} style={{marginTop: 5}}/>
+                <View style={[styles.innerContainer, {backgroundColor: "#b1b1b1"}]}>
+                    <ImageViewer placeholderImageSource={RARE_PEPE_IMAGE}/>
                 </View>
             </SwipeableView>
         </View>

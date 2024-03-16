@@ -16,7 +16,13 @@ const getSubChildren = (children, currentPage) => {
 }
 
 const EmptyTemplateView = (id) => {
-    return (<View style={styles.templateContainer} key={id}><Text>{id}</Text></View>)
+    return (
+        <View style={styles.templateContainer} key={id}>
+            <Text style={{color: "#e3e3e3"}}>
+                Nothing{'\n'}to{'\n'}see{'\n'}here
+            </Text>
+        </View>
+    )
 }
 
 const SwipeableView = ({children}) => {
