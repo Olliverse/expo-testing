@@ -1,6 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {Animated, Dimensions, StyleSheet, Text, View} from 'react-native';
 import {Gesture, GestureDetector, GestureHandlerRootView} from "react-native-gesture-handler";
+import {useCurrentPageState} from "../context/PageContext";
 
 
 const getSubChildren = (children, currentPage) => {
@@ -31,7 +32,8 @@ const SwipeableView = ({children}) => {
     const translateRef = useRef(new Animated.Value(0)).current;
 
     const childrenArray = React.Children.toArray(children)
-    const [currentPage, setCurrentPage] = useState(1);
+    const {currentPage, setCurrentPage} = useCurrentPageState();
+
     const [childrenToRender, setChildrenToRender] = useState(getSubChildren(children, currentPage));
 
     useEffect(() => {
@@ -45,7 +47,7 @@ const SwipeableView = ({children}) => {
     }
 
     const shouldSwipeRight = (translation) => {
-        return translation < 0 && currentPage < children.length;
+        return translation < 0 && currentPage < childrenArray.length;
     }
 
     const shouldSwipe = (translation) => {
@@ -70,7 +72,7 @@ const SwipeableView = ({children}) => {
         }).start(() => updateCurrentPage(translationX));
     }
 
-    const performDrawbackAnimation = (translationX) => {
+    const performDrawbackAnimation = () => {
         Animated.spring(translateRef, {
             toValue: 0,
             bounciness: 20,
@@ -87,7 +89,7 @@ const SwipeableView = ({children}) => {
         if (swipeDistance > width / 4 && shouldSwipe(translationX)) {
             performSwipeAnimation(translationX);
         } else {
-            performDrawbackAnimation(translationX);
+            performDrawbackAnimation();
         }
     })
 
