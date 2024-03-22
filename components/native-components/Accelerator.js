@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     text: {
-        color: "white",
+        color: "black",
         fontSize: 16,
         marginLeft: 10,
     },
