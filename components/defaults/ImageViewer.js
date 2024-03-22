@@ -2,8 +2,6 @@ import React from 'react';
 import { Image, StyleSheet, ScrollView } from 'react-native';
 
 export default function ImageViewer({ placeholderImageSource, enableZoom }) {
-    console.log("Loading image from:", placeholderImageSource);
-
     if (enableZoom) {
         return (
             // TODO: diy the zoom

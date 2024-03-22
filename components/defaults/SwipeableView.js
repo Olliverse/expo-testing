@@ -26,9 +26,9 @@ const EmptyTemplateView = (id) => {
     )
 }
 
-const SwipeableView = ({children}) => {
+const SwipeableView = ({children, panGesture}) => {
     const {width} = Dimensions.get('window');
-    const pan = Gesture.Pan()
+
     const translateRef = useRef(new Animated.Value(0)).current;
 
     const childrenArray = React.Children.toArray(children)
@@ -80,11 +80,11 @@ const SwipeableView = ({children}) => {
         }).start();
     }
 
-    pan.onChange(({translationX}) => {
+    panGesture.onChange(({translationX}) => {
         translateRef.setValue(translationX)
     })
 
-    pan.onEnd(({translationX}) => {
+    panGesture.onEnd(({translationX}) => {
         const swipeDistance = Math.abs(translationX);
         if (swipeDistance > width / 4 && shouldSwipe(translationX)) {
             performSwipeAnimation(translationX);
@@ -95,7 +95,7 @@ const SwipeableView = ({children}) => {
 
     return (
         <GestureHandlerRootView style={styles.container}>
-            <GestureDetector gesture={pan}>
+            <GestureDetector gesture={panGesture}>
                 <Animated.View
                     style={[
                         styles.swipeContainer,

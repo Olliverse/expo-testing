@@ -8,15 +8,18 @@ import Accelerator from "../components/native-components/Accelerator";
 import SwipeableView from "../components/defaults/SwipeableView";
 import RandomAppInfo from "../components/native-components/RandomAppInfo";
 import Frieren from "../components/native-components/Frieren";
+import {Gesture} from "react-native-gesture-handler";
 
 const ALI_PEPE_IMAGE = require("../assets/images/alipepe.png");
 const RARE_PEPE_IMAGE = require("../assets/images/rarepepe.png");
 
 export default function AppContainer() {
+    const panGesture = Gesture.Pan()
+
     return (
         <View style={styles.mainContainer}>
             <StatusBar style="auto"/>
-            <SwipeableView>
+            <SwipeableView panGesture={panGesture}>
                 <View style={[styles.innerContainer, {backgroundColor: "#969696"}]}>
                     <ImageViewer placeholderImageSource={ALI_PEPE_IMAGE}/>
                     <Button label="Choose a photo" theme={"primary"} style={{marginTop: 5}}/>
@@ -44,7 +47,7 @@ export default function AppContainer() {
                 </View>
 
                 <View style={[styles.innerContainer, {backgroundColor: "#b1b1b1"}]}>
-                    <Frieren />
+                    <Frieren panGesture={panGesture}/>
                 </View>
             </SwipeableView>
         </View>

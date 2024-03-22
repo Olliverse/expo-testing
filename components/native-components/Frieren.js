@@ -2,14 +2,15 @@ import {FlatList, SafeAreaView, ScrollView, StyleSheet} from 'react-native';
 import {Asset} from "expo-asset";
 import React, {useMemo, useState} from "react";
 import ImageViewer from "../defaults/ImageViewer";
+import {Gesture, GestureDetector, GestureHandlerRootView} from "react-native-gesture-handler";
 
 /*
 * Uses the following deps:
 * - npx expo install expo-asset
 * - npx expo install react-native-safe-area-context
 * */
-export default function Frieren({useScrollView}) {
-
+export default function Frieren({panGesture}) {
+    const differentPan = Gesture.Pan()
     const getAsset = (chapter, page) => {
         try {
             return Asset.fromURI(`https://cdn.hxmanga.com/file/sworldnoox/sousou-no-frieren/chapter-${chapter}/${page}.webp`);
@@ -30,7 +31,7 @@ export default function Frieren({useScrollView}) {
 
     const assets = useMemo(
         () => {
-            console.log("Use memo called")
+            console.log("Frieren - Use memo called")
             return getAssets(chapter)
         },
         [chapter]
@@ -38,18 +39,22 @@ export default function Frieren({useScrollView}) {
 
     return (
         <SafeAreaView style={styles.container}>
-
             {
-                useScrollView ?
-                    <FlatList
-                        data={assets}
-                        renderItem={({item}) => <ImageViewer placeholderImageSource={item} enableZoom={true}/>}
-                    />
+                assets.length > 0 ?
+                    <GestureHandlerRootView style={styles.container}>
+                        <GestureDetector gesture={differentPan}>
+                            <FlatList
+                                data={assets}
+                                renderItem={({item}) => <ImageViewer placeholderImageSource={item} enableZoom={true}/>}
+                            />
+                        </GestureDetector>
+                    </GestureHandlerRootView>
                     :
+                    // Just here to check out how jsx mapping syntax is
                     <ScrollView>
                         {
                             assets.map(asset =>
-                                <ImageViewer key={asset} placeholderImageSource={asset} enableZoom={true}/>
+                                <ImageViewer key={asset.uri} placeholderImageSource={asset} enableZoom={true}/>
                             )
                         }
                     </ScrollView>
