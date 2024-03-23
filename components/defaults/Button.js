@@ -1,16 +1,27 @@
 import {Pressable, StyleSheet, Text, View} from 'react-native';
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import PropTypes from "prop-types";
 
 function defaultFunc(label) {
-    alert(`"${label}" pressed.`)
+    alert(`No callback given for '${label}'`)
 }
 
 export default function Button({label, style, onPress, callbackVars}) {
+    const handleClick = () => {
+        if (callbackVars) {
+            onPress(callbackVars)
+        } else if (onPress) {
+            onPress();
+        } else {
+            defaultFunc(label)
+        }
+    }
+
     return (
         <View style={[style, styles.buttonContainer, {borderWidth: 4, borderColor: "#b3b3b3", borderRadius: 18}]}>
             <Pressable
                 style={[styles.button, {backgroundColor: "#fff"}]}
-                onPress={() => callbackVars ? onPress(callbackVars) : (onPress ? onPress() : defaultFunc(label))}
+                onPress={() => handleClick()}
             >
                 <FontAwesome
                     name="picture-o"
@@ -23,6 +34,13 @@ export default function Button({label, style, onPress, callbackVars}) {
         </View>
     );
 }
+
+Button.propTypes = {
+    label: PropTypes.string,
+    style: PropTypes.object,
+    onPress: PropTypes.func,
+    callbackVars: PropTypes.func,
+};
 
 const styles = StyleSheet.create({
     buttonContainer: {

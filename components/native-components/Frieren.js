@@ -1,16 +1,19 @@
-import {FlatList, SafeAreaView, ScrollView, StyleSheet} from 'react-native';
+import {Animated, FlatList, SafeAreaView, ScrollView, StyleSheet} from 'react-native';
 import {Asset} from "expo-asset";
 import React, {useMemo, useState} from "react";
 import ImageViewer from "../defaults/ImageViewer";
 import {Gesture, GestureDetector, GestureHandlerRootView} from "react-native-gesture-handler";
+import PropTypes from "prop-types";
 
 /*
 * Uses the following deps:
 * - npx expo install expo-asset
 * - npx expo install react-native-safe-area-context
 * */
-export default function Frieren({panGesture}) {
-    const differentPan = Gesture.Pan()
+export default function Frieren({horizontalSwipeGesture}) {
+    const verticalSwipeGesture = Gesture.Pan()
+    const gestures = Gesture.Simultaneous(verticalSwipeGesture, horizontalSwipeGesture);
+    // ComposedGesture.
     const getAsset = (chapter, page) => {
         try {
             return Asset.fromURI(`https://cdn.hxmanga.com/file/sworldnoox/sousou-no-frieren/chapter-${chapter}/${page}.webp`);
@@ -42,11 +45,16 @@ export default function Frieren({panGesture}) {
             {
                 assets.length > 0 ?
                     <GestureHandlerRootView style={styles.container}>
-                        <GestureDetector gesture={differentPan}>
-                            <FlatList
-                                data={assets}
-                                renderItem={({item}) => <ImageViewer placeholderImageSource={item} enableZoom={true}/>}
-                            />
+                        <GestureDetector gesture={gestures}>
+                            <Animated.View>
+                                {/* Ich werd probably die Flatlist nicht nutzen..*/}
+                                <FlatList
+                                    showsVerticalScrollIndicator={false}
+                                    data={assets}
+                                    renderItem={({item}) => <ImageViewer placeholderImageSource={item}
+                                                                         enableZoom={true}/>}
+                                />
+                            </Animated.View>
                         </GestureDetector>
                     </GestureHandlerRootView>
                     :
@@ -62,6 +70,10 @@ export default function Frieren({panGesture}) {
         </SafeAreaView>
     );
 }
+
+Frieren.propTypes = {
+    horizontalSwipeGesture: PropTypes.object,
+};
 
 const styles = StyleSheet.create({
     container: {

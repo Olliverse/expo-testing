@@ -1,5 +1,6 @@
 import React from 'react';
-import { Image, StyleSheet, ScrollView } from 'react-native';
+import {Image, StyleSheet, ScrollView, Dimensions} from 'react-native';
+import PropTypes from "prop-types";
 
 export default function ImageViewer({ placeholderImageSource, enableZoom }) {
     if (enableZoom) {
@@ -31,6 +32,11 @@ export default function ImageViewer({ placeholderImageSource, enableZoom }) {
     }
 }
 
+ImageViewer.propTypes = {
+    placeholderImageSource: PropTypes.object | PropTypes.number,
+    enableZoom: PropTypes.bool,
+};
+
 const styles = StyleSheet.create({
     container: {
         flexGrow: 1,
@@ -38,8 +44,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     image: {
-        width: 320,
-        height: 440,
+        // TODO: checken, dass es sich anpasst
+        width: Dimensions.get('window').width - 1,
+        height: 450,
+        // width: 320,
+        // height: 440,
         borderRadius: 18,
     },
 });

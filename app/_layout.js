@@ -1,13 +1,13 @@
 import {Slot} from 'expo-router';
 import {CurrentPageProvider} from "../components/context/PageContext";
+import {ThemeProvider} from "../components/context/ThemeContext";
 
 export default function HomeLayout() {
     return (
-        <CurrentPageProvider>
-            <Slot/>
-        </CurrentPageProvider>
+        <ThemeProvider>
+            <CurrentPageProvider>
+                <Slot/>
+            </CurrentPageProvider>
+        </ThemeProvider>
     )
 }
-// <ThemeProvider value={DarkTheme}>
-//     <Slot />
-// </ThemeProvider>

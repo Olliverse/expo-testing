@@ -13,7 +13,7 @@ function routeTo(path) {
 }
 
 export default function Test() {
-    const [text, onChangeText] = useState('/test/idk');
+    const [text, setText] = useState('/test/idk');
 
     return (
         <View style={styles.mainContainer}>
@@ -21,7 +21,7 @@ export default function Test() {
 
             <TextInput
                 style={styles.input}
-                onChangeText={onChangeText}
+                onChangeText={setText}
                 value={text}
             />
             <Button label={"Route back"} style={{marginTop: 25}} onPress={() => routeBack()}></Button>

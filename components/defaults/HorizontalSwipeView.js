@@ -1,8 +1,8 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {Animated, Dimensions, StyleSheet, Text, View} from 'react-native';
-import {Gesture, GestureDetector, GestureHandlerRootView} from "react-native-gesture-handler";
+import {GestureDetector, GestureHandlerRootView} from "react-native-gesture-handler";
 import {useCurrentPageState} from "../context/PageContext";
-
+import PropTypes from "prop-types";
 
 const getSubChildren = (children, currentPage) => {
     if (currentPage > 1 && currentPage < children.length) {
@@ -26,7 +26,7 @@ const EmptyTemplateView = (id) => {
     )
 }
 
-const SwipeableView = ({children, panGesture}) => {
+const HorizontalSwipeView = ({children, horizontalSwipeGesture}) => {
     const {width} = Dimensions.get('window');
 
     const translateRef = useRef(new Animated.Value(0)).current;
@@ -80,11 +80,11 @@ const SwipeableView = ({children, panGesture}) => {
         }).start();
     }
 
-    panGesture.onChange(({translationX}) => {
+    horizontalSwipeGesture.onChange(({translationX}) => {
         translateRef.setValue(translationX)
     })
 
-    panGesture.onEnd(({translationX}) => {
+    horizontalSwipeGesture.onEnd(({translationX}) => {
         const swipeDistance = Math.abs(translationX);
         if (swipeDistance > width / 4 && shouldSwipe(translationX)) {
             performSwipeAnimation(translationX);
@@ -95,7 +95,7 @@ const SwipeableView = ({children, panGesture}) => {
 
     return (
         <GestureHandlerRootView style={styles.container}>
-            <GestureDetector gesture={panGesture}>
+            <GestureDetector gesture={horizontalSwipeGesture}>
                 <Animated.View
                     style={[
                         styles.swipeContainer,
@@ -109,6 +109,11 @@ const SwipeableView = ({children, panGesture}) => {
             </GestureDetector>
         </GestureHandlerRootView>
     );
+};
+
+HorizontalSwipeView.propTypes = {
+    children: PropTypes.array,
+    horizontalSwipeGesture: PropTypes.object
 };
 
 const styles = StyleSheet.create({
@@ -133,4 +138,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default SwipeableView;
+export default HorizontalSwipeView;

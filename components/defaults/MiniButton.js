@@ -1,37 +1,32 @@
 import {Pressable, StyleSheet, Text, View} from 'react-native';
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import PropTypes from "prop-types";
 
-export default function MiniButton({label, theme, style, callback, callbackVars}) {
-    if (theme === "primary") {
-        return (
-            <View style={[style, styles.buttonContainer, {borderWidth: 2, borderColor: "#b3b3b3", borderRadius: 8}]}>
-                <Pressable
-                    style={[styles.button, {backgroundColor: "#fff"}]}
-                    onPress={() => callbackVars ? callback(callbackVars) : callback()}
-                >
-                    <FontAwesome
-                        name="picture-o"
-                        size={11}
-                        color="#25292e"
-                        style={styles.buttonIcon}
-                    />
-                    <Text style={[styles.buttonLabel, {color: "#25292e"}]}>{label}</Text>
-                </Pressable>
-            </View>
-        );
-    }
-
+export default function MiniButton({label, style, callback, callbackVars}) {
     return (
-        <View style={styles.buttonContainer}>
+        <View style={[style, styles.buttonContainer, {borderWidth: 2, borderColor: "#b3b3b3", borderRadius: 8}]}>
             <Pressable
-                style={styles.button}
+                style={[styles.button, {backgroundColor: "#fff"}]}
                 onPress={() => callbackVars ? callback(callbackVars) : callback()}
             >
-                <Text style={styles.buttonLabel}>{label}</Text>
+                <FontAwesome
+                    name="picture-o"
+                    size={11}
+                    color="#25292e"
+                    style={styles.buttonIcon}
+                />
+                <Text style={[styles.buttonLabel, {color: "#25292e"}]}>{label}</Text>
             </Pressable>
         </View>
     );
 }
+
+MiniButton.propTypes = {
+    label: PropTypes.string,
+    style: PropTypes.object,
+    callback: PropTypes.func,
+    callbackVars: PropTypes.func,
+};
 
 const styles = StyleSheet.create({
     buttonContainer: {
