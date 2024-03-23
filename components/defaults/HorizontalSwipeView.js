@@ -4,6 +4,16 @@ import {GestureDetector, GestureHandlerRootView} from "react-native-gesture-hand
 import {useCurrentPageState} from "../context/PageContext";
 import PropTypes from "prop-types";
 
+const EmptyTemplateView = (id) => {
+    return (
+        <View style={styles.templateContainer} key={id}>
+            <Text style={{color: "#e3e3e3"}}>
+                Nothing{'\n'}to{'\n'}see{'\n'}here
+            </Text>
+        </View>
+    )
+}
+
 const getSubChildren = (children, currentPage) => {
     if (currentPage > 1 && currentPage < children.length) {
         return [children[currentPage - 2], children[currentPage - 1], children[currentPage]];
@@ -16,31 +26,17 @@ const getSubChildren = (children, currentPage) => {
     }
 }
 
-const EmptyTemplateView = (id) => {
-    return (
-        <View style={styles.templateContainer} key={id}>
-            <Text style={{color: "#e3e3e3"}}>
-                Nothing{'\n'}to{'\n'}see{'\n'}here
-            </Text>
-        </View>
-    )
-}
-
 const HorizontalSwipeView = ({children, horizontalSwipeGesture}) => {
     const {width} = Dimensions.get('window');
-
     const translateRef = useRef(new Animated.Value(0)).current;
-
     const childrenArray = React.Children.toArray(children)
     const {currentPage, setCurrentPage} = useCurrentPageState();
-
     const [childrenToRender, setChildrenToRender] = useState(getSubChildren(children, currentPage));
 
     useEffect(() => {
         translateRef.setValue(0)
         setChildrenToRender(getSubChildren(childrenArray, currentPage));
     }, [currentPage]);
-
 
     const shouldSwipeLeft = (translation) => {
         return translation >= 0 && currentPage > 1;
@@ -94,20 +90,18 @@ const HorizontalSwipeView = ({children, horizontalSwipeGesture}) => {
         })
 
     return (
-        <GestureHandlerRootView style={styles.container}>
-            <GestureDetector gesture={horizontalSwipeGesture}>
-                <Animated.View
-                    style={[
-                        styles.swipeContainer,
-                        {
-                            transform: [{translateX: translateRef}],
-                            width: "300%"
-                        }
-                    ]}>
-                    {childrenToRender}
-                </Animated.View>
-            </GestureDetector>
-        </GestureHandlerRootView>
+        <GestureDetector gesture={horizontalSwipeGesture}>
+            <Animated.View
+                style={[
+                    styles.swipeContainer,
+                    {
+                        transform: [{translateX: translateRef}],
+                        width: "300%"
+                    }
+                ]}>
+                {childrenToRender}
+            </Animated.View>
+        </GestureDetector>
     );
 };
 
