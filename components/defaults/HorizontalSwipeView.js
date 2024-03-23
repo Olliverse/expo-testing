@@ -80,18 +80,18 @@ const HorizontalSwipeView = ({children, horizontalSwipeGesture}) => {
         }).start();
     }
 
-    horizontalSwipeGesture.onChange(({translationX}) => {
-        translateRef.setValue(translationX)
-    })
-
-    horizontalSwipeGesture.onEnd(({translationX}) => {
-        const swipeDistance = Math.abs(translationX);
-        if (swipeDistance > width / 4 && shouldSwipe(translationX)) {
-            performSwipeAnimation(translationX);
-        } else {
-            performDrawbackAnimation();
-        }
-    })
+    horizontalSwipeGesture
+        .onChange(({translationX}) => {
+            translateRef.setValue(translationX)
+        })
+        .onEnd(({translationX}) => {
+            const swipeDistance = Math.abs(translationX);
+            if (swipeDistance > width / 4 && shouldSwipe(translationX)) {
+                performSwipeAnimation(translationX);
+            } else {
+                performDrawbackAnimation();
+            }
+        })
 
     return (
         <GestureHandlerRootView style={styles.container}>

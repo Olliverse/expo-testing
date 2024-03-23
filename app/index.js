@@ -15,7 +15,7 @@ const RARE_PEPE_IMAGE = require("../assets/images/rarepepe.png");
 
 export default function AppContainer() {
     const horizontalSwipeGesture = Gesture.Pan()
-
+    console.log("MAIN")
     return (
         <View style={styles.mainContainer}>
             <StatusBar style="auto"/>

@@ -18,7 +18,7 @@ export default function ImageViewer({ placeholderImageSource, enableZoom }) {
                 <Image
                     source={placeholderImageSource}
                     style={styles.image}
-                    resizeMode="contain" // Adjust the image resizing mode as needed
+                    resizeMode="contain"
                 />
             </ScrollView>
         );
@@ -33,7 +33,7 @@ export default function ImageViewer({ placeholderImageSource, enableZoom }) {
 }
 
 ImageViewer.propTypes = {
-    placeholderImageSource: PropTypes.object | PropTypes.number,
+    placeholderImageSource: PropTypes.any, // TODO: any ?!
     enableZoom: PropTypes.bool,
 };
 
