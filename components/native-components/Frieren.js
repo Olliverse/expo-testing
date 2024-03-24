@@ -1,15 +1,11 @@
-import {Animated, SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import {Asset} from "expo-asset";
 import React, {useMemo, useState} from "react";
-import ImageViewer from "../defaults/ImageViewer";
-import {FlatList, Gesture, GestureDetector} from "react-native-gesture-handler";
+import {FlatList} from "react-native-gesture-handler";
 import PropTypes from "prop-types";
+import ZoomableImage from "../defaults/ZoomableImage";
+import MiniButton from "../defaults/MiniButton";
 
-/*
-* Uses the following deps:
-* - npx expo install expo-asset
-* - npx expo install react-native-safe-area-context
-* */
 export default function Frieren() {
     const getAsset = (chapter, page) => {
         try {
@@ -21,7 +17,7 @@ export default function Frieren() {
 
     const getAssets = (chapter) => {
         let assets = []
-        for (let page = 1; page <= 5; page++) {
+        for (let page = 1; page <= 30; page++) {
             assets.push(getAsset(chapter, page))
         }
         return assets;
@@ -37,16 +33,37 @@ export default function Frieren() {
     );
 
     return (
-        <SafeAreaView>
+        <View style={styles.container}>
+            <Text style={styles.heading}>
+                Frieren
+            </Text>
+            <View style={{display: "flex", flexDirection: 'row', alignItems: "center"}}>
+                <MiniButton iconName={"backward"} callback={() => setChapter(chapter - 1)}></MiniButton>
+                <Text style={{marginLeft: 20, marginRight: 20, fontSize: 20}}>Chapter {chapter}</Text>
+                <MiniButton iconName={"forward"} callback={() => setChapter(chapter + 1)}></MiniButton>
+            </View>
             <FlatList
                 showsVerticalScrollIndicator={false}
                 data={assets}
-                renderItem={({item}) => <ImageViewer placeholderImageSource={item} enableZoom={true}/>}
+                renderItem={({item}) => <ZoomableImage source={item}/>}
             />
-        </SafeAreaView>
+        </View>
     );
 }
 
 Frieren.propTypes = {
     horizontalSwipeGesture: PropTypes.object,
 };
+
+const styles = StyleSheet.create({
+    container: {
+        display: "flex",
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    heading: {
+        fontSize: 36,
+        fontWeight: 'bold',
+        marginTop: 35
+    },
+});

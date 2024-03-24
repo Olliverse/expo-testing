@@ -2,7 +2,7 @@ import {Pressable, StyleSheet, Text, View} from 'react-native';
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import PropTypes from "prop-types";
 
-export default function MiniButton({label, style, callback, callbackVars}) {
+export default function MiniButton({label, style, callback, callbackVars, iconName}) {
     return (
         <View style={[style, styles.buttonContainer, {borderWidth: 2, borderColor: "#b3b3b3", borderRadius: 8}]}>
             <Pressable
@@ -10,7 +10,7 @@ export default function MiniButton({label, style, callback, callbackVars}) {
                 onPress={() => callbackVars ? callback(callbackVars) : callback()}
             >
                 <FontAwesome
-                    name="picture-o"
+                    name={iconName}
                     size={11}
                     color="#25292e"
                     style={styles.buttonIcon}

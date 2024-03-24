@@ -1,11 +1,11 @@
 import React from 'react';
 import {Image, StyleSheet, ScrollView, Dimensions} from 'react-native';
 import PropTypes from "prop-types";
+import {Asset} from "expo-asset";
 
 export default function ImageViewer({ placeholderImageSource, enableZoom }) {
     if (enableZoom) {
         return (
-            // TODO: diy the zoom
             <ScrollView
                 contentContainerStyle={styles.container}
                 maximumZoomScale={2.5}
@@ -33,7 +33,7 @@ export default function ImageViewer({ placeholderImageSource, enableZoom }) {
 }
 
 ImageViewer.propTypes = {
-    placeholderImageSource: PropTypes.any, // TODO: any ?!
+    placeholderImageSource: PropTypes.any,
     enableZoom: PropTypes.bool,
 };
 
@@ -44,11 +44,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     image: {
-        // TODO: checken, dass es sich anpasst
-        width: Dimensions.get('window').width - 1,
+        width: Dimensions.get('window').width,
         height: 450,
-        // width: 320,
-        // height: 440,
         borderRadius: 18,
     },
 });
