@@ -44,7 +44,7 @@ export default function Frieren() {
             <FlatList
                 showsVerticalScrollIndicator={false}
                 data={assets}
-                renderItem={({item}) => <ZoomableImage source={item}/>}
+                renderItem={({item}) => <ZoomableImage img={item}/>}
             />
         </View>
     );

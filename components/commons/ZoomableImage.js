@@ -1,13 +1,18 @@
 import React from 'react';
-import {Dimensions, Image, SafeAreaView, StyleSheet, View} from 'react-native';
+import {Dimensions, Image, SafeAreaView, StyleSheet} from 'react-native';
 import PropTypes from "prop-types";
 import {Asset} from "expo-asset";
 
-export default function ZoomableImage({source}) {
+/*
+* TODO
+*  This component may be named Zoomable but zoom is NOT YET IMPLEMENTED.
+*  Its kinda hard since its combined with gesture to swipe left/right & up/down
+* */
+export default function ZoomableImage({img}) {
     return (
         <SafeAreaView>
             <Image
-                source={source}
+                source={img}
                 style={styles.image}
                 resizeMode="contain"
             />
@@ -16,7 +21,7 @@ export default function ZoomableImage({source}) {
 }
 
 ZoomableImage.propTypes = {
-    placeholderImageSource: PropTypes.objectOf(Asset),
+    img: PropTypes.objectOf(Asset),
 };
 
 const styles = StyleSheet.create({
@@ -24,6 +29,6 @@ const styles = StyleSheet.create({
         width: Dimensions.get('window').width,
         height: undefined,
         maxHeight: Dimensions.get('window').height,
-        aspectRatio: 800/1147,
+        aspectRatio: 800 / 1147,
     },
 });

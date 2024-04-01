@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 export default function MiniButton({label, style, callback, callbackVars, iconName}) {
     return (
-        <View style={[style, styles.buttonContainer, {borderWidth: 2, borderColor: "#b3b3b3", borderRadius: 8}]}>
+        <View style={[styles.buttonContainer, style]}>
             <Pressable
                 style={[styles.button, {backgroundColor: "#fff"}]}
                 onPress={() => callbackVars ? callback(callbackVars) : callback()}
@@ -15,7 +15,9 @@ export default function MiniButton({label, style, callback, callbackVars, iconNa
                     color="#25292e"
                     style={styles.buttonIcon}
                 />
-                <Text style={[styles.buttonLabel, {color: "#25292e"}]}>{label}</Text>
+                <Text style={[styles.buttonLabel, {color: "#25292e"}]}>
+                    {label}
+                </Text>
             </Pressable>
         </View>
     );
@@ -35,6 +37,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         padding: 2,
+        borderWidth: 2,
+        borderColor: "#b3b3b3",
+        borderRadius: 8
     },
     button: {
         borderRadius: 4,

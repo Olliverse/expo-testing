@@ -38,10 +38,9 @@ export default function Accelerator() {
                 <Text style={styles.text}>z: {z.toFixed(2)}</Text>
             </View>
             <View style={styles.rowContainer}>
-                <MiniButton label={subscription ? 'On' : 'Off'} theme={"primary"}
-                            callback={subscription ? _unsubscribe : _subscribe}/>
-                <MiniButton label={"Slow"} theme={"primary"} callback={_slow}/>
-                <MiniButton label={"Fast"} theme={"primary"} callback={_fast}/>
+                <MiniButton label={subscription ? 'On' : 'Off'} callback={subscription ? _unsubscribe : _subscribe}/>
+                <MiniButton label={"Slow"} callback={_slow}/>
+                <MiniButton label={"Fast"} callback={_fast}/>
             </View>
         </View>
     );

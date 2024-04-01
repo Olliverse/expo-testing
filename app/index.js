@@ -9,25 +9,33 @@ import HorizontalSwipeView from "../components/HorizontalSwipeView";
 import RandomAppInfo from "../components/native_components/RandomAppInfo";
 import Frieren from "../components/Frieren";
 import {Gesture, GestureHandlerRootView} from "react-native-gesture-handler";
+import ThemeSwitch from "../components/commons/ThemeSwitch";
+import {useThemeState} from "../contexts/ThemeContext";
 
 export default function AppContainer() {
+    const {theme} = useThemeState();
     const horizontalSwipeGesture = Gesture.Pan()
+
     return (
         <View style={styles.mainContainer}>
             <StatusBar style="auto"/>
             <GestureHandlerRootView style={styles.gestureContainer}>
                 <HorizontalSwipeView horizontalSwipeGesture={horizontalSwipeGesture}>
-                    <View style={[styles.innerContainer, {backgroundColor: "#969696"}]}>
-                        <ImageViewer placeholderImageSource={require("../assets/images/main_image.png")}/>
-                        <Button label="Choose a photo" theme={"primary"} style={{marginTop: 5}}/>
-                        <Button label="Use this photo" theme={"primary"} style={{marginTop: 5}}/>
+                    <View style={[styles.innerContainer, {backgroundColor: theme.background}]}>
+                        <ThemeSwitch/>
                     </View>
 
-                    <View style={[styles.innerContainer, {backgroundColor: "#b1b1b1"}]}>
+                    <View style={[styles.innerContainer, {backgroundColor: theme.background}]}>
+                        <ImageViewer img={require("../assets/images/main_image.png")}/>
+                        <Button label="Choose a photo" style={{marginTop: 5}}/>
+                        <Button label="Use this photo" style={{marginTop: 5}}/>
+                    </View>
+
+                    <View style={[styles.innerContainer, {backgroundColor: theme.background}]}>
                         <Accelerator/>
                     </View>
 
-                    <View style={[styles.innerContainer, {backgroundColor: "#969696"}]}>
+                    <View style={[styles.innerContainer, {backgroundColor: theme.background}]}>
                         <Link asChild href="/test">
                             <Pressable>
                                 <Text>This Link does not persist the state</Text>
@@ -35,11 +43,11 @@ export default function AppContainer() {
                         </Link>
                     </View>
 
-                    <View style={[styles.innerContainer, {backgroundColor: "#969696"}]}>
+                    <View style={[styles.innerContainer, {backgroundColor: theme.background}]}>
                         <RandomAppInfo/>
                     </View>
 
-                    <View style={[styles.innerContainer, {backgroundColor: "#b1b1b1"}]}>
+                    <View style={[styles.innerContainer, {backgroundColor: theme.background}]}>
                         <Frieren/>
                     </View>
                 </HorizontalSwipeView>

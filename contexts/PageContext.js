@@ -1,7 +1,7 @@
 import React, {createContext, useState, useContext, useMemo} from 'react';
 import PropTypes from "prop-types";
 
-const DEFAULT_VALUE = 1;
+const DEFAULT_VALUE = 2;
 const PageContext = createContext(DEFAULT_VALUE);
 
 export const CurrentPageProvider = ({ children }) => {
