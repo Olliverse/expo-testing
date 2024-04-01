@@ -13,16 +13,16 @@ import ThemeSwitch from "../components/commons/ThemeSwitch";
 import {useThemeState} from "../contexts/ThemeContext";
 
 export default function AppContainer() {
-    const {theme} = useThemeState();
+    const {theme, setTheme} = useThemeState();
     const horizontalSwipeGesture = Gesture.Pan()
 
     return (
-        <View style={styles.mainContainer}>
+        <View style={[styles.mainContainer, {backgroundColor: theme.background}]}>
             <StatusBar style="auto"/>
-            <GestureHandlerRootView style={styles.gestureContainer}>
+            <GestureHandlerRootView style={[styles.gestureContainer, {backgroundColor: theme.background}]}>
                 <HorizontalSwipeView horizontalSwipeGesture={horizontalSwipeGesture}>
                     <View style={[styles.innerContainer, {backgroundColor: theme.background}]}>
-                        <ThemeSwitch/>
+                        <ThemeSwitch setTheme ={setTheme}/>
                     </View>
 
                     <View style={[styles.innerContainer, {backgroundColor: theme.background}]}>
@@ -62,13 +62,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         width: "100%",
         height: "100%",
-        backgroundColor: '#25292e',
     },
     gestureContainer: {
         display: "flex",
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#fff'
     },
     innerContainer: {
         display: "flex",

@@ -1,21 +1,24 @@
 import {Pressable, StyleSheet, Text, View} from 'react-native';
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import PropTypes from "prop-types";
+import {useThemeState} from "../../contexts/ThemeContext";
 
 export default function MiniButton({label, style, callback, callbackVars, iconName}) {
+    const {theme} = useThemeState();
+
     return (
-        <View style={[styles.buttonContainer, style]}>
+        <View style={[styles.buttonContainer, style, {borderColor: theme.background}]}>
             <Pressable
-                style={[styles.button, {backgroundColor: "#fff"}]}
+                style={[styles.button, {backgroundColor: theme.primary1}]}
                 onPress={() => callbackVars ? callback(callbackVars) : callback()}
             >
                 <FontAwesome
                     name={iconName}
                     size={11}
-                    color="#25292e"
+                    color={theme.secondary1}
                     style={styles.buttonIcon}
                 />
-                <Text style={[styles.buttonLabel, {color: "#25292e"}]}>
+                <Text style={[styles.buttonLabel, {color: theme.text}]}>
                     {label}
                 </Text>
             </Pressable>
@@ -38,7 +41,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         padding: 2,
         borderWidth: 2,
-        borderColor: "#b3b3b3",
         borderRadius: 8
     },
     button: {

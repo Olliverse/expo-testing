@@ -1,45 +1,45 @@
 import {StyleSheet, Switch, Text, View} from 'react-native';
-import {useThemeState} from "../../contexts/ThemeContext";
 import {useEffect, useState} from "react";
-import {darkColor, lightColor} from "../../styles/colors";
+import {dark, light} from "../../styles/colors";
+import PropTypes from "prop-types";
+import MiniButton from "./MiniButton";
+import {useThemeState} from "../../contexts/ThemeContext";
 
-export default function ThemeSwitch() {
-    const {theme, setTheme} = useThemeState();
-    const [darkMode, setDarkMode] = useState(theme === "dark");
+export default function ThemeSwitch({setTheme}) {
+    const {theme} = useThemeState();
+    const [darkMode, setDarkMode] = useState(theme.background === "#212121");
 
     useEffect(() => {
-        if(darkMode && theme === "light") {
+        if (darkMode) {
             setTheme("dark")
         }
-        if(!darkMode && theme === "dark") {
+        if (!darkMode) {
             setTheme("light")
         }
     }, [darkMode]);
 
-    function getContainerColor() {
-        switch (theme) {
-            case "light":
-                return {backgroundColor: lightColor.background}
-            case "dark":
-                return {backgroundColor: darkColor.background}
-            default:
-                console.log(`No theme selected: ${theme}`)
-                return {backgroundColor: lightColor.background}
-        }
-    }
+    console.log("switch" , theme)
 
     return (
-        <View style={[styles.container, getContainerColor()]}>
-            <Text style={styles.label}>Dark Mode</Text>
+        <View style={[styles.container, {backgroundColor: theme.background}]}>
+            <Text style={[styles.label, {color: theme.text}]}>
+                Dark Mode
+            </Text>
             <Switch
-                trackColor={{false: lightColor.secondary1, true: darkColor.secondary1}}
-                thumbColor={darkMode ? darkColor.background : lightColor.background}
+                trackColor={{false: light.primary2, true: dark.primary2}}
+                thumbColor={darkMode ? dark.background : light.background}
+                // ios_backgroundColor="#3e3e3e"
                 onValueChange={setDarkMode}
                 value={darkMode}
             />
         </View>
     );
 }
+
+MiniButton.propTypes = {
+    // theme: PropTypes.object,
+    setTheme: PropTypes.func,
+};
 
 const styles = StyleSheet.create({
     container: {
@@ -54,6 +54,5 @@ const styles = StyleSheet.create({
     label: {
         fontSize: 16,
         fontWeight: 'bold',
-        color: '#333',
     },
 });

@@ -1,4 +1,4 @@
-export const lightColor = {
+export const light = {
     background: '#F5F5F5',
     primary1: '#005EA5',
     primary2: '#1A89FF',
@@ -12,7 +12,7 @@ export const lightColor = {
     accent: '#FFC107',
 };
 
-export const darkColor = {
+export const dark = {
     background: '#212121',
     primary1: '#003566',
     primary2: '#005EA5',
