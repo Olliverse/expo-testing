@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {Accelerometer} from 'expo-sensors';
-import MiniButton from "../defaults/MiniButton";
+import MiniButton from "../commons/MiniButton";
 
 export default function Accelerator() {
 
@@ -28,7 +28,10 @@ export default function Accelerator() {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>Accelerometer</Text>
+
+            <Text style={{fontSize: 24, fontWeight: "bold", marginTop: 100}}>
+                Information from Native Accelerometer API (expo-sensors):
+            </Text>
             <View style={styles.rowContainer}>
                 <Text style={styles.text}>x: {x.toFixed(2)}</Text>
                 <Text style={styles.text}>y: {y.toFixed(2)}</Text>

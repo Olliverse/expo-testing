@@ -2,16 +2,13 @@ import {StatusBar} from "expo-status-bar";
 import {Dimensions, Pressable, StyleSheet, Text, View} from "react-native";
 import {Link} from "expo-router";
 
-import Button from '../components/defaults/Button';
-import ImageViewer from '../components/defaults/ImageViewer';
-import Accelerator from "../components/native-components/Accelerator";
-import HorizontalSwipeView from "../components/defaults/HorizontalSwipeView";
-import RandomAppInfo from "../components/native-components/RandomAppInfo";
-import Frieren from "../components/native-components/Frieren";
+import Button from '../components/commons/Button';
+import ImageViewer from '../components/commons/ImageViewer';
+import Accelerator from "../components/native_components/Accelerator";
+import HorizontalSwipeView from "../components/HorizontalSwipeView";
+import RandomAppInfo from "../components/native_components/RandomAppInfo";
+import Frieren from "../components/Frieren";
 import {Gesture, GestureHandlerRootView} from "react-native-gesture-handler";
-
-const ALI_PEPE_IMAGE = require("../assets/images/alipepe.png");
-const RARE_PEPE_IMAGE = require("../assets/images/rarepepe.png");
 
 export default function AppContainer() {
     const horizontalSwipeGesture = Gesture.Pan()
@@ -21,7 +18,7 @@ export default function AppContainer() {
             <GestureHandlerRootView style={styles.gestureContainer}>
                 <HorizontalSwipeView horizontalSwipeGesture={horizontalSwipeGesture}>
                     <View style={[styles.innerContainer, {backgroundColor: "#969696"}]}>
-                        <ImageViewer placeholderImageSource={ALI_PEPE_IMAGE}/>
+                        <ImageViewer placeholderImageSource={require("../assets/images/main_image.png")}/>
                         <Button label="Choose a photo" theme={"primary"} style={{marginTop: 5}}/>
                         <Button label="Use this photo" theme={"primary"} style={{marginTop: 5}}/>
                     </View>
@@ -40,10 +37,6 @@ export default function AppContainer() {
 
                     <View style={[styles.innerContainer, {backgroundColor: "#969696"}]}>
                         <RandomAppInfo/>
-                    </View>
-
-                    <View style={[styles.innerContainer, {backgroundColor: "#b1b1b1"}]}>
-                        <ImageViewer placeholderImageSource={RARE_PEPE_IMAGE}/>
                     </View>
 
                     <View style={[styles.innerContainer, {backgroundColor: "#b1b1b1"}]}>

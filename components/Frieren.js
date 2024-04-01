@@ -1,10 +1,9 @@
-import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import {Asset} from "expo-asset";
 import React, {useMemo, useState} from "react";
 import {FlatList} from "react-native-gesture-handler";
-import PropTypes from "prop-types";
-import ZoomableImage from "../defaults/ZoomableImage";
-import MiniButton from "../defaults/MiniButton";
+import ZoomableImage from "./commons/ZoomableImage";
+import MiniButton from "./commons/MiniButton";
 
 export default function Frieren() {
     const getAsset = (chapter, page) => {
@@ -17,13 +16,13 @@ export default function Frieren() {
 
     const getAssets = (chapter) => {
         let assets = []
-        for (let page = 1; page <= 30; page++) {
+        for (let page = 1; page <= 4; page++) {
             assets.push(getAsset(chapter, page))
         }
         return assets;
     }
 
-    const [chapter, setChapter] = useState(101);
+    const [chapter, setChapter] = useState(28);
 
     const assets = useMemo(
         () => {
@@ -50,10 +49,6 @@ export default function Frieren() {
         </View>
     );
 }
-
-Frieren.propTypes = {
-    horizontalSwipeGesture: PropTypes.object,
-};
 
 const styles = StyleSheet.create({
     container: {

@@ -8,7 +8,7 @@ export default function Hallo() {
         <View style={styles.mainContainer}>
             <StatusBar style="auto"/>
 
-            <Text style={styles.text}>{hallo}</Text>
+            <Text style={styles.text}>You visited /test/{hallo}</Text>
             <Link replace href="/"></Link>
         </View>
     );
@@ -24,8 +24,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#25292e',
     },
     text: {
-        height: 60,
-        width: 240,
+        height: 120,
+        width: 360,
         color: "black",
         backgroundColor: 'white',
         borderWidth: 4,
