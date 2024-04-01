@@ -111,12 +111,6 @@ HorizontalSwipeView.propTypes = {
 };
 
 const styles = StyleSheet.create({
-    container: {
-        display: "flex",
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#fff'
-    },
     swipeContainer: {
         display: "flex",
         flexDirection: 'row',
@@ -126,7 +120,6 @@ const styles = StyleSheet.create({
         display: "flex",
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#fff',
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height
     },

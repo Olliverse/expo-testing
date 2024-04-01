@@ -18,7 +18,7 @@ export default function MiniButton({label, style, callback, callbackVars, iconNa
                     color={theme.secondary1}
                     style={styles.buttonIcon}
                 />
-                <Text style={[styles.buttonLabel, {color: theme.text}]}>
+                <Text style={{fontSize: 11, color: theme.text}}>
                     {label}
                 </Text>
             </Pressable>
@@ -53,9 +53,5 @@ const styles = StyleSheet.create({
     },
     buttonIcon: {
         paddingRight: 4,
-    },
-    buttonLabel: {
-        color: '#fff',
-        fontSize: 11,
     },
 });

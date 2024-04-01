@@ -19,6 +19,7 @@ export default function AppContainer() {
     return (
         <View style={[styles.mainContainer, {backgroundColor: theme.background}]}>
             <StatusBar style="auto"/>
+
             <GestureHandlerRootView style={[styles.gestureContainer, {backgroundColor: theme.background}]}>
                 <HorizontalSwipeView horizontalSwipeGesture={horizontalSwipeGesture}>
                     <View style={[styles.innerContainer, {backgroundColor: theme.background}]}>

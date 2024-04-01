@@ -1,12 +1,10 @@
 import {StyleSheet, Switch, Text, View} from 'react-native';
 import {useEffect, useState} from "react";
 import {dark, light} from "../../styles/colors";
-import PropTypes from "prop-types";
-import MiniButton from "./MiniButton";
 import {useThemeState} from "../../contexts/ThemeContext";
 
-export default function ThemeSwitch({setTheme}) {
-    const {theme} = useThemeState();
+export default function ThemeSwitch() {
+    const {theme, setTheme} = useThemeState();
     const [darkMode, setDarkMode] = useState(theme.background === "#212121");
 
     useEffect(() => {
@@ -17,8 +15,6 @@ export default function ThemeSwitch({setTheme}) {
             setTheme("light")
         }
     }, [darkMode]);
-
-    console.log("switch" , theme)
 
     return (
         <View style={[styles.container, {backgroundColor: theme.background}]}>
@@ -35,11 +31,6 @@ export default function ThemeSwitch({setTheme}) {
         </View>
     );
 }
-
-MiniButton.propTypes = {
-    // theme: PropTypes.object,
-    setTheme: PropTypes.func,
-};
 
 const styles = StyleSheet.create({
     container: {
