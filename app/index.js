@@ -1,19 +1,19 @@
 import {StatusBar} from "expo-status-bar";
 import {View} from "react-native";
 import Main from "../components/Main";
-import {useCurrentUserState} from "../contexts/UserContext";
 import AuthScreen from "../components/AuthPage";
+import {useUser} from "../contexts/UserContext";
 
 /*
 * This is the default route "/"
 * */
 export default function AppContainer() {
-    const {currentUser} = useCurrentUserState()
+    const {user} = useUser()
 
     return (
         <View>
             <StatusBar style="auto"/>
-            { currentUser === undefined ? <AuthScreen/> : <Main/>}
+            { user ? <Main/> : <AuthScreen/>}
         </View>
     );
 }

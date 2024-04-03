@@ -2,9 +2,9 @@ import {StyleSheet, Text, View} from 'react-native';
 import {Asset} from "expo-asset";
 import React, {useEffect, useMemo, useRef, useState} from "react";
 import {FlatList} from "react-native-gesture-handler";
-import ZoomableImage from "./commons/ZoomableImage";
-import MiniButton from "./commons/MiniButton";
-import {useThemeState} from "../contexts/ThemeContext";
+import ZoomableImage from "../commons/ZoomableImage";
+import MiniButton from "../commons/MiniButton";
+import {useThemeState} from "../../contexts/ThemeContext";
 
 export default function Frieren() {
     const {theme} = useThemeState();

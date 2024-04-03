@@ -1,14 +1,13 @@
-import React, {useState} from 'react';
-import {View, TextInput, Button, Alert, StyleSheet, Dimensions} from 'react-native';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import React from 'react';
+import {View, StyleSheet, Dimensions} from 'react-native';
 import {Gesture, GestureHandlerRootView} from "react-native-gesture-handler";
-import HorizontalSwipeView from "./HorizontalSwipeView";
-import ThemeSwitch from "./ThemeSwitch";
-import ImageDisplayTemplate from "./ImageDisplayPage";
+import HorizontalSwipeView from "./main_components/HorizontalSwipeView";
+import ThemeSwitch from "./main_components/ThemeSwitch";
+import ImageDisplayTemplate from "./main_components/ImageDisplayPage";
 import Accelerator from "./native_components/Accelerator";
 import RandomAppInfo from "./native_components/RandomAppInfo";
-import RouterPage from "./RouterPage";
-import Frieren from "./Frieren";
+import RouterPage from "./main_components/RouterPage";
+import Frieren from "./main_components/Frieren";
 import {useThemeState} from "../contexts/ThemeContext";
 
 

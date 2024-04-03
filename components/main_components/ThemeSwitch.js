@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {StyleSheet, Switch, Text, View} from 'react-native';
-import {dark, light} from "../styles/colors";
-import {useThemeState} from "../contexts/ThemeContext";
+import {dark, light} from "../../styles/colors";
+import {useThemeState} from "../../contexts/ThemeContext";
 
 export default function ThemeSwitch() {
     const {theme, setTheme} = useThemeState();

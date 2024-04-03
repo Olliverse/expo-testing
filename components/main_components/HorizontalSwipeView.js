@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {Animated, Dimensions, StyleSheet, Text, View} from 'react-native';
 import {GestureDetector} from "react-native-gesture-handler";
-import {useCurrentPageState} from "../contexts/PageContext";
+import {useCurrentPageState} from "../../contexts/PageContext";
 import PropTypes from "prop-types";
 
 const EmptyTemplateView = (id) => {

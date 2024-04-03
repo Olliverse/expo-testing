@@ -1,7 +1,7 @@
 import {Slot} from 'expo-router';
 import {CurrentPageProvider} from "../contexts/PageContext";
 import {ThemeProvider} from "../contexts/ThemeContext";
-import {CurrentUserProvider} from "../contexts/UserContext";
+import {AuthProvider} from "../contexts/UserContext";
 
 /*
 * This is the entrypoint of the application and can be defined in some of the config files
@@ -9,11 +9,11 @@ import {CurrentUserProvider} from "../contexts/UserContext";
 export default function HomeLayout() {
     return (
         <ThemeProvider>
-            <CurrentUserProvider>
+            <AuthProvider>
                 <CurrentPageProvider>
                     <Slot/>
                 </CurrentPageProvider>
-            </CurrentUserProvider>
+            </AuthProvider>
         </ThemeProvider>
     )
 }

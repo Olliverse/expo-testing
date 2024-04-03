@@ -4,10 +4,10 @@ import PropTypes from "prop-types";
 
 const UserContext = createContext(undefined);
 
-export const CurrentUserProvider = ({children}) => {
-    const [currentUser, setCurrentUser] = useState(undefined);
+export const AuthProvider = ({children}) => {
+    const [user, setUser] = useState(undefined);
 
-    const contextValue = useMemo(() => ({currentUser, setCurrentUser}), [currentUser]);
+    const contextValue = useMemo(() => ({user, setUser}), [user]);
 
     return (
         <UserContext.Provider value={contextValue}>
@@ -16,8 +16,8 @@ export const CurrentUserProvider = ({children}) => {
     );
 };
 
-CurrentUserProvider.propTypes = {
+AuthProvider.propTypes = {
     children: PropTypes.any,
 };
 
-export const useCurrentUserState = () => useContext(UserContext);
+export const useUser = () => useContext(UserContext);
