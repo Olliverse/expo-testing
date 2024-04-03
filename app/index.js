@@ -1,5 +1,5 @@
 import {StatusBar} from "expo-status-bar";
-import {Dimensions, Pressable, StyleSheet, Text, View} from "react-native";
+import {Dimensions, StyleSheet, View} from "react-native";
 
 import Accelerator from "../components/native_components/Accelerator";
 import HorizontalSwipeView from "../components/HorizontalSwipeView";
@@ -30,7 +30,7 @@ export default function AppContainer() {
                     </View>
 
                     <View style={styles.innerContainer}>
-                        <ImageDisplayTemplate />
+                        <ImageDisplayTemplate/>
                     </View>
 
                     <View style={styles.innerContainer}>
@@ -42,7 +42,7 @@ export default function AppContainer() {
                     </View>
 
                     <View style={styles.innerContainer}>
-                        <RouterPage />
+                        <RouterPage/>
                     </View>
 
                     <View style={styles.innerContainer}>

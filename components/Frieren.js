@@ -16,7 +16,7 @@ export default function Frieren() {
     }, [chapter]);
 
     const scrollToTop = () => {
-        flatListRef.current.scrollToOffset({ offset: 0, animated: true });
+        flatListRef.current.scrollToOffset({offset: 0, animated: true});
     };
 
     const getAsset = (chapter, page) => {
@@ -49,7 +49,8 @@ export default function Frieren() {
             </Text>
             <View style={{display: "flex", flexDirection: 'row', alignItems: "center"}}>
                 <MiniButton iconName={"backward"} callback={() => setChapter(chapter - 1)}></MiniButton>
-                <Text style={{marginLeft: 20, marginRight: 20, fontSize: 20, color: theme.text}}>Chapter {chapter}</Text>
+                <Text
+                    style={{marginLeft: 20, marginRight: 20, fontSize: 20, color: theme.text}}>Chapter {chapter}</Text>
                 <MiniButton iconName={"forward"} callback={() => setChapter(chapter + 1)}></MiniButton>
             </View>
             <FlatList

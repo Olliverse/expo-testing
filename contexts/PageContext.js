@@ -5,7 +5,7 @@ const DEFAULT_VALUE = 2;
 
 const PageContext = createContext(undefined);
 
-export const CurrentPageProvider = ({ children }) => {
+export const CurrentPageProvider = ({children}) => {
     const [currentPage, setCurrentPage] = useState(DEFAULT_VALUE);
     const resetCurrentPage = () => {
         setCurrentPage(DEFAULT_VALUE);
@@ -35,7 +35,7 @@ export const CurrentPageProvider = ({ children }) => {
     //     };
     // }, []);
 
-    const contextValue = useMemo(() => ({ currentPage, setCurrentPage, resetCurrentPage }), [currentPage]);
+    const contextValue = useMemo(() => ({currentPage, setCurrentPage, resetCurrentPage}), [currentPage]);
 
     return (
         <PageContext.Provider value={contextValue}>

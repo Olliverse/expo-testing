@@ -1,11 +1,11 @@
 import React from 'react';
-import { Pressable, Text, StyleSheet } from 'react-native';
+import {Pressable, StyleSheet, Text} from 'react-native';
 import PropTypes from 'prop-types';
-import { useThemeState } from '../../contexts/ThemeContext';
+import {useThemeState} from '../../contexts/ThemeContext';
 import {router} from "expo-router";
 
-export default function LinkButton({ label, path, style}) {
-    const { theme } = useThemeState();
+export default function LinkButton({label, path, style}) {
+    const {theme} = useThemeState();
 
     const handlePress = () => {
         router.push(path);
@@ -13,7 +13,7 @@ export default function LinkButton({ label, path, style}) {
 
     return (
         <Pressable onPress={handlePress} style={style}>
-            <Text style={[styles.link, { color: theme.primary1 }]}>
+            <Text style={[styles.link, {color: theme.primary1}]}>
                 {label}
             </Text>
         </Pressable>

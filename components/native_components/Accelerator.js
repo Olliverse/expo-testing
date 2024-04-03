@@ -1,14 +1,14 @@
-import { useState, useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { Accelerometer } from 'expo-sensors';
+import {useEffect, useState} from 'react';
+import {StyleSheet, Text, View} from 'react-native';
+import {Accelerometer} from 'expo-sensors';
 import MiniButton from '../commons/MiniButton';
-import { useThemeState } from '../../contexts/ThemeContext';
+import {useThemeState} from '../../contexts/ThemeContext';
 import Button from "../commons/Button";
 
 export default function Accelerator() {
-    const { theme } = useThemeState();
+    const {theme} = useThemeState();
 
-    const [{ x, y, z }, setData] = useState({
+    const [{x, y, z}, setData] = useState({
         x: 0,
         y: 0,
         z: 0,
@@ -44,26 +44,27 @@ export default function Accelerator() {
 
     return (
         <View style={styles.container}>
-            <Text style={[styles.title, { color: theme.text }]}>
+            <Text style={[styles.title, {color: theme.text}]}>
                 Information from Native Accelerometer API (expo-sensors):
             </Text>
             <View style={styles.dataContainer}>
                 <View style={styles.dataRow}>
-                    <Text style={[styles.dataLabel, { color: theme.text }]}>x:</Text>
-                    <Text style={[styles.dataValue, { color: theme.text }]}>{x.toFixed(2)}</Text>
+                    <Text style={[styles.dataLabel, {color: theme.text}]}>x:</Text>
+                    <Text style={[styles.dataValue, {color: theme.text}]}>{x.toFixed(2)}</Text>
                 </View>
                 <View style={styles.dataRow}>
-                    <Text style={[styles.dataLabel, { color: theme.text }]}>y:</Text>
-                    <Text style={[styles.dataValue, { color: theme.text }]}>{y.toFixed(2)}</Text>
+                    <Text style={[styles.dataLabel, {color: theme.text}]}>y:</Text>
+                    <Text style={[styles.dataValue, {color: theme.text}]}>{y.toFixed(2)}</Text>
                 </View>
                 <View style={styles.dataRow}>
-                    <Text style={[styles.dataLabel, { color: theme.text }]}>z:</Text>
-                    <Text style={[styles.dataValue, { color: theme.text }]}>{z.toFixed(2)}</Text>
+                    <Text style={[styles.dataLabel, {color: theme.text}]}>z:</Text>
+                    <Text style={[styles.dataValue, {color: theme.text}]}>{z.toFixed(2)}</Text>
                 </View>
             </View>
             <View style={styles.buttonContainer}>
                 <View style={styles.buttonRow}>
-                    <Button label={subscription ? 'Stop' : 'Start'} callback={_toggleSubscription} iconName={subscription ? 'pause' : 'play'} />
+                    <Button label={subscription ? 'Stop' : 'Start'} callback={_toggleSubscription}
+                            iconName={subscription ? 'pause' : 'play'}/>
                 </View>
                 <View style={styles.buttonRow}>
                     <MiniButton label={'Slow'} callback={_slow} style={{width: "40%"}}/>

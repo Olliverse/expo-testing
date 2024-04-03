@@ -1,7 +1,7 @@
 import TestRoute from "../../components/commons/TestRoute";
 import React from "react";
 import {useLocalSearchParams} from "expo-router";
-import {StyleSheet, View, Text} from "react-native";
+import {StyleSheet, Text, View} from "react-native";
 import {useThemeState} from "../../contexts/ThemeContext";
 
 export default function SomeVar() {
