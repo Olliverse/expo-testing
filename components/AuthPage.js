@@ -1,10 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {Alert, StyleSheet, Text, TextInput, View} from 'react-native';
-import {createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword} from "firebase/auth";
+import {getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword} from "firebase/auth";
 import {useThemeState} from "../contexts/ThemeContext";
 import Button from "./commons/Button";
 import {useUser} from "../contexts/UserContext";
-import {getFirebaseAuth} from "../firebaseConfig";
 
 export default function AuthScreen() {
     const {theme} = useThemeState();
@@ -12,7 +11,7 @@ export default function AuthScreen() {
     const [password, setPassword] = useState('');
     const {setUser} = useUser();
 
-    const auth = getFirebaseAuth();
+    const auth = getAuth();
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {

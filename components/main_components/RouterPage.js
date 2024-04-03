@@ -13,9 +13,9 @@ export default function RouterPage() {
                 fontWeight: 'bold',
                 marginBottom: 20,
                 color: theme.text,
-            }}>Expo Router</Text>
-            <LinkButton label={'Route to /test'} path={'/test'} style={{marginBottom: 10}}/>
-            <LinkButton label={'Route to /recursive'} path={'/recursive'}/>
+            }}>Expo Router Test</Text>
+            <LinkButton label={'Route to /test'} path={'/test'}/>
+            <LinkButton label={'Route to /recursive'} path={'/recursive'} style={{marginBottom: 15, marginTop: 15}}/>
             <LinkButton label={'Route to your user page'} path={'/user'}/>
         </View>
     )

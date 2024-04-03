@@ -7,6 +7,7 @@ import {AuthProvider} from "../contexts/UserContext";
 * This is the entrypoint of the application and can be defined in some of the config files
 * */
 export default function HomeLayout() {
+    require("../firebaseConfig");
     return (
         <ThemeProvider>
             <AuthProvider>
