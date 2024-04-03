@@ -16,6 +16,7 @@ export default function RouterPage() {
             }}>Expo Router</Text>
             <LinkButton label={'Route to /test'} path={'/test'} style={{marginBottom: 10}}/>
             <LinkButton label={'Route to /recursive'} path={'/recursive'}/>
+            <LinkButton label={'Route to your user page'} path={'/user'}/>
         </View>
     )
 };

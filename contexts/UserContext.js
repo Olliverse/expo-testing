@@ -1,22 +1,18 @@
 import React, {createContext, useContext, useMemo, useState} from 'react';
 import PropTypes from "prop-types";
 
-const DEFAULT_VALUE = 2;
 
-const PageContext = createContext(undefined);
+const UserContext = createContext(undefined);
 
 export const CurrentUserProvider = ({children}) => {
-    const [currentPage, setCurrentPage] = useState(DEFAULT_VALUE);
-    const resetCurrentPage = () => {
-        setCurrentPage(DEFAULT_VALUE);
-    };
+    const [currentUser, setCurrentUser] = useState(undefined);
 
-    const contextValue = useMemo(() => ({currentPage, setCurrentPage, resetCurrentPage}), [currentPage]);
+    const contextValue = useMemo(() => ({currentUser, setCurrentUser}), [currentUser]);
 
     return (
-        <PageContext.Provider value={contextValue}>
+        <UserContext.Provider value={contextValue}>
             {children}
-        </PageContext.Provider>
+        </UserContext.Provider>
     );
 };
 

@@ -4,6 +4,8 @@ import {View} from "react-native";
 export default function Test() {
     return (
         // TODO: Load current user here and then display the information?
-        <View />
+        <View>
+            <Text>kommt noch</Text>
+        </View>
     );
 }
