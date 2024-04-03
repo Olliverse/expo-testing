@@ -13,30 +13,30 @@ import ThemeSwitch from "../components/commons/ThemeSwitch";
 import {useThemeState} from "../contexts/ThemeContext";
 
 export default function AppContainer() {
-    const {theme, setTheme} = useThemeState();
+    const {theme} = useThemeState();
     const horizontalSwipeGesture = Gesture.Pan()
 
     return (
-        <View style={[styles.mainContainer, {backgroundColor: theme.background}]}>
-            <StatusBar style="auto"/>
+        <View>
+            <StatusBar style="auto" hidden={true}/>
 
             <GestureHandlerRootView style={[styles.gestureContainer, {backgroundColor: theme.background}]}>
                 <HorizontalSwipeView horizontalSwipeGesture={horizontalSwipeGesture}>
-                    <View style={[styles.innerContainer, {backgroundColor: theme.background}]}>
-                        <ThemeSwitch setTheme ={setTheme}/>
+                    <View style={styles.innerContainer}>
+                        <ThemeSwitch/>
                     </View>
 
-                    <View style={[styles.innerContainer, {backgroundColor: theme.background}]}>
+                    <View style={styles.innerContainer}>
                         <ImageViewer img={require("../assets/images/main_image.png")}/>
                         <Button label="Choose a photo" style={{marginTop: 5}}/>
                         <Button label="Use this photo" style={{marginTop: 5}}/>
                     </View>
 
-                    <View style={[styles.innerContainer, {backgroundColor: theme.background}]}>
+                    <View style={styles.innerContainer}>
                         <Accelerator/>
                     </View>
 
-                    <View style={[styles.innerContainer, {backgroundColor: theme.background}]}>
+                    <View style={styles.innerContainer}>
                         <Link asChild href="/test">
                             <Pressable>
                                 <Text>This Link does not persist the state</Text>
@@ -44,11 +44,11 @@ export default function AppContainer() {
                         </Link>
                     </View>
 
-                    <View style={[styles.innerContainer, {backgroundColor: theme.background}]}>
+                    <View style={styles.innerContainer}>
                         <RandomAppInfo/>
                     </View>
 
-                    <View style={[styles.innerContainer, {backgroundColor: theme.background}]}>
+                    <View style={styles.innerContainer}>
                         <Frieren/>
                     </View>
                 </HorizontalSwipeView>
@@ -58,22 +58,18 @@ export default function AppContainer() {
 }
 
 const styles = StyleSheet.create({
-    mainContainer: {
-        display: "flex",
-        alignItems: 'center',
-        width: "100%",
-        height: "100%",
-    },
     gestureContainer: {
         display: "flex",
         justifyContent: 'center',
         alignItems: 'center',
+        width: "100%",
+        height: "100%",
     },
     innerContainer: {
         display: "flex",
         alignItems: 'center',
         justifyContent: 'center',
         width: Dimensions.get('window').width,
-        height: '100%'
+        // height: '100%'
     },
 });

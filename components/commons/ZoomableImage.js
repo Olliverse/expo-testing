@@ -1,7 +1,6 @@
 import React from 'react';
 import {Dimensions, Image, SafeAreaView, StyleSheet} from 'react-native';
 import PropTypes from "prop-types";
-import {Asset} from "expo-asset";
 
 /*
 * TODO
@@ -21,7 +20,7 @@ export default function ZoomableImage({img}) {
 }
 
 ZoomableImage.propTypes = {
-    img: PropTypes.objectOf(Asset),
+    img: PropTypes.object,
 };
 
 const styles = StyleSheet.create({

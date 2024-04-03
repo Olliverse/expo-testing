@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "HelloWorld",
-    "slug": "HelloWorld",
+    "name": "ExpoTesting",
+    "slug": "ExpoTesting",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -23,7 +23,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.firest3rm6.HelloWorld"
+      "package": "com.rwu.ExpoTest"
     },
     "web": {
       "favicon": "./assets/favicon.png",

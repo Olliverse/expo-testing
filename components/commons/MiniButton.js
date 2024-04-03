@@ -7,7 +7,7 @@ export default function MiniButton({label, style, callback, callbackVars, iconNa
     const {theme} = useThemeState();
 
     return (
-        <View style={[styles.buttonContainer, style, {borderColor: theme.background}]}>
+        <View style={[styles.buttonContainer, {borderColor: theme.background}, style]}>
             <Pressable
                 style={[styles.button, {backgroundColor: theme.primary1}]}
                 onPress={() => callbackVars ? callback(callbackVars) : callback()}
@@ -31,6 +31,7 @@ MiniButton.propTypes = {
     style: PropTypes.object,
     callback: PropTypes.func,
     callbackVars: PropTypes.func,
+    iconName: PropTypes.string,
 };
 
 const styles = StyleSheet.create({

@@ -5,14 +5,13 @@ import {useThemeState} from "../../contexts/ThemeContext";
 
 export default function ThemeSwitch() {
     const {theme, setTheme} = useThemeState();
-    const [darkMode, setDarkMode] = useState(theme.background === "#212121");
+    const [darkMode, setDarkMode] = useState(theme === dark);
 
     useEffect(() => {
         if (darkMode) {
-            setTheme("dark")
-        }
-        if (!darkMode) {
-            setTheme("light")
+            setTheme(dark)
+        } else {
+            setTheme(light)
         }
     }, [darkMode]);
 

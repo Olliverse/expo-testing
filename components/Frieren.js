@@ -4,8 +4,11 @@ import React, {useMemo, useState} from "react";
 import {FlatList} from "react-native-gesture-handler";
 import ZoomableImage from "./commons/ZoomableImage";
 import MiniButton from "./commons/MiniButton";
+import {useThemeState} from "../contexts/ThemeContext";
 
 export default function Frieren() {
+    const {theme} = useThemeState();
+
     const getAsset = (chapter, page) => {
         try {
             return Asset.fromURI(`https://cdn.hxmanga.com/file/sworldnoox/sousou-no-frieren/chapter-${chapter}/${page}.webp`);
@@ -33,12 +36,12 @@ export default function Frieren() {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.heading}>
+            <Text style={[styles.heading, {color: theme.text}]}>
                 Frieren
             </Text>
             <View style={{display: "flex", flexDirection: 'row', alignItems: "center"}}>
                 <MiniButton iconName={"backward"} callback={() => setChapter(chapter - 1)}></MiniButton>
-                <Text style={{marginLeft: 20, marginRight: 20, fontSize: 20}}>Chapter {chapter}</Text>
+                <Text style={{marginLeft: 20, marginRight: 20, fontSize: 20, color: theme.text}}>Chapter {chapter}</Text>
                 <MiniButton iconName={"forward"} callback={() => setChapter(chapter + 1)}></MiniButton>
             </View>
             <FlatList

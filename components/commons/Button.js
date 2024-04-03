@@ -1,12 +1,15 @@
 import {Pressable, StyleSheet, Text, View} from 'react-native';
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import PropTypes from "prop-types";
+import {useThemeState} from "../../contexts/ThemeContext";
 
 function defaultFunc(label) {
     alert(`No callback given for '${label}'`)
 }
 
 export default function Button({label, style, onPress, callbackVars}) {
+    const {theme} = useThemeState();
+
     const handleClick = () => {
         if (callbackVars) {
             onPress(callbackVars)
@@ -18,18 +21,18 @@ export default function Button({label, style, onPress, callbackVars}) {
     }
 
     return (
-        <View style={[style, styles.buttonContainer, {borderWidth: 4, borderColor: "#b3b3b3", borderRadius: 18}]}>
+        <View style={[styles.buttonContainer, {borderColor: "#b3b3b3"}, style]}>
             <Pressable
-                style={[styles.button, {backgroundColor: "#fff"}]}
+                style={styles.button}
                 onPress={() => handleClick()}
             >
                 <FontAwesome
                     name="picture-o"
                     size={18}
                     color="#25292e"
-                    style={styles.buttonIcon}
+                    style={{paddingRight: 8}}
                 />
-                <Text style={[styles.buttonLabel, {color: "#25292e"}]}>{label}</Text>
+                <Text style={[styles.buttonLabel, {color: theme.text}]}>{label}</Text>
             </Pressable>
         </View>
     );
@@ -49,6 +52,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         padding: 3,
+        borderWidth: 4,
+        borderRadius: 18
     },
     button: {
         borderRadius: 10,
@@ -59,11 +64,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         flexDirection: 'row',
     },
-    buttonIcon: {
-        paddingRight: 8,
-    },
     buttonLabel: {
-        color: '#fff',
         fontSize: 16,
     },
 });

@@ -1,25 +1,18 @@
-import React, {createContext, useContext, useEffect, useState} from 'react';
+import React, {createContext, useContext, useMemo, useState} from 'react';
 import PropTypes from "prop-types";
-import {dark, light} from "../styles/colors";
+import {light} from "../styles/colors";
 
-const THEMES = {
-    light: light,
-    dark: dark
-};
-
-const DEFAULT_VALUE = 'light'
 const ThemeContext = createContext(undefined);
 
 export const ThemeProvider = ({children}) => {
-    const [theme, setTheme] = useState(DEFAULT_VALUE);
-    const [colors, setColors] = useState(THEMES[DEFAULT_VALUE]);
+    const [theme, setTheme] = useState(light);
 
-    useEffect(() => {
-        setColors(THEMES[theme]);
+    const context = useMemo(() => {
+        return {theme, setTheme}
     }, [theme]);
 
     return (
-        <ThemeContext.Provider value={{theme: colors, setTheme}}>
+        <ThemeContext.Provider value={context}>
             {children}
         </ThemeContext.Provider>
     );
