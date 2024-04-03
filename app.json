@@ -6,7 +6,7 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-    "scheme": "hello",
+    "scheme": "offapptest123",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -23,7 +23,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.rwu.ExpoTest"
+      "package": "oliver.rausch.ExpoTest"
     },
     "web": {
       "favicon": "./assets/favicon.png",

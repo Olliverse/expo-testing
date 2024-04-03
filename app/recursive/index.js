@@ -2,8 +2,8 @@ import TestRoute from "../../components/commons/TestRoute";
 import {Text} from "react-native";
 import React from "react";
 
-export default function Test() {
+export default function Recursive() {
     return (
-        <TestRoute defaultRoute={'/test/idk'}/>
+        <TestRoute defaultRoute={'/recursive/1'}/>
     );
 }

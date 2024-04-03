@@ -1,6 +1,6 @@
 import {StyleSheet, Text, View} from 'react-native';
 import {Asset} from "expo-asset";
-import React, {useMemo, useState} from "react";
+import React, {useEffect, useMemo, useRef, useState} from "react";
 import {FlatList} from "react-native-gesture-handler";
 import ZoomableImage from "./commons/ZoomableImage";
 import MiniButton from "./commons/MiniButton";
@@ -8,6 +8,16 @@ import {useThemeState} from "../contexts/ThemeContext";
 
 export default function Frieren() {
     const {theme} = useThemeState();
+    const flatListRef = useRef();
+    const [chapter, setChapter] = useState(28);
+
+    useEffect(() => {
+        scrollToTop();
+    }, [chapter]);
+
+    const scrollToTop = () => {
+        flatListRef.current.scrollToOffset({ offset: 0, animated: true });
+    };
 
     const getAsset = (chapter, page) => {
         try {
@@ -24,8 +34,6 @@ export default function Frieren() {
         }
         return assets;
     }
-
-    const [chapter, setChapter] = useState(28);
 
     const assets = useMemo(
         () => {
@@ -45,9 +53,11 @@ export default function Frieren() {
                 <MiniButton iconName={"forward"} callback={() => setChapter(chapter + 1)}></MiniButton>
             </View>
             <FlatList
+                ref={flatListRef}
                 showsVerticalScrollIndicator={false}
                 data={assets}
                 renderItem={({item}) => <ZoomableImage img={item}/>}
+                style={{marginTop: 5}}
             />
         </View>
     );

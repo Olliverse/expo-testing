@@ -1,24 +1,27 @@
 import {StatusBar} from "expo-status-bar";
 import {Dimensions, Pressable, StyleSheet, Text, View} from "react-native";
-import {Link} from "expo-router";
 
-import Button from '../components/commons/Button';
-import ImageViewer from '../components/commons/ImageViewer';
 import Accelerator from "../components/native_components/Accelerator";
 import HorizontalSwipeView from "../components/HorizontalSwipeView";
 import RandomAppInfo from "../components/native_components/RandomAppInfo";
 import Frieren from "../components/Frieren";
 import {Gesture, GestureHandlerRootView} from "react-native-gesture-handler";
-import ThemeSwitch from "../components/commons/ThemeSwitch";
+import ThemeSwitch from "../components/ThemeSwitch";
 import {useThemeState} from "../contexts/ThemeContext";
+import ImageDisplayTemplate from "../components/ImageDisplayTemplate";
+import RouterPage from "../components/RouterPage";
 
+
+/*
+* This is the default route "/"
+* */
 export default function AppContainer() {
     const {theme} = useThemeState();
-    const horizontalSwipeGesture = Gesture.Pan()
+    const horizontalSwipeGesture = Gesture.Pan();
 
     return (
         <View>
-            <StatusBar style="auto" hidden={true}/>
+            <StatusBar style="auto"/>
 
             <GestureHandlerRootView style={[styles.gestureContainer, {backgroundColor: theme.background}]}>
                 <HorizontalSwipeView horizontalSwipeGesture={horizontalSwipeGesture}>
@@ -27,9 +30,7 @@ export default function AppContainer() {
                     </View>
 
                     <View style={styles.innerContainer}>
-                        <ImageViewer img={require("../assets/images/main_image.png")}/>
-                        <Button label="Choose a photo" style={{marginTop: 5}}/>
-                        <Button label="Use this photo" style={{marginTop: 5}}/>
+                        <ImageDisplayTemplate />
                     </View>
 
                     <View style={styles.innerContainer}>
@@ -37,15 +38,11 @@ export default function AppContainer() {
                     </View>
 
                     <View style={styles.innerContainer}>
-                        <Link asChild href="/test">
-                            <Pressable>
-                                <Text>This Link does not persist the state</Text>
-                            </Pressable>
-                        </Link>
+                        <RandomAppInfo/>
                     </View>
 
                     <View style={styles.innerContainer}>
-                        <RandomAppInfo/>
+                        <RouterPage />
                     </View>
 
                     <View style={styles.innerContainer}>
@@ -70,6 +67,5 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         width: Dimensions.get('window').width,
-        // height: '100%'
     },
 });

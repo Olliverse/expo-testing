@@ -1,70 +1,62 @@
+import React from 'react';
 import {Pressable, StyleSheet, Text, View} from 'react-native';
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import PropTypes from "prop-types";
 import {useThemeState} from "../../contexts/ThemeContext";
 
-function defaultFunc(label) {
-    alert(`No callback given for '${label}'`)
-}
-
-export default function Button({label, style, onPress, callbackVars}) {
+export default function Button({label, style, callback, iconName}) {
     const {theme} = useThemeState();
 
-    const handleClick = () => {
-        if (callbackVars) {
-            onPress(callbackVars)
-        } else if (onPress) {
-            onPress();
-        } else {
-            defaultFunc(label)
-        }
-    }
-
     return (
-        <View style={[styles.buttonContainer, {borderColor: "#b3b3b3"}, style]}>
-            <Pressable
-                style={styles.button}
-                onPress={() => handleClick()}
-            >
-                <FontAwesome
-                    name="picture-o"
-                    size={18}
-                    color="#25292e"
-                    style={{paddingRight: 8}}
-                />
-                <Text style={[styles.buttonLabel, {color: theme.text}]}>{label}</Text>
-            </Pressable>
-        </View>
+        <Pressable
+            style={({pressed}) => [
+                styles.button,
+                {
+                    backgroundColor: pressed ? theme.primary3 : theme.primary2,
+                    borderColor: theme.borderColor,
+                },
+                style
+            ]}
+            onPress={() => callback()}
+            accessibilityRole="button"
+            accessible={true}
+            accessibilityLabel={label}
+        >
+            <View style={styles.buttonContent}>
+                {iconName && <FontAwesome name={iconName} size={20} color={theme.text} style={styles.icon}/>}
+                <Text style={[styles.label, {color: theme.text}]}>{label}</Text>
+            </View>
+        </Pressable>
     );
 }
 
 Button.propTypes = {
-    label: PropTypes.string,
+    label: PropTypes.string.isRequired,
     style: PropTypes.object,
-    onPress: PropTypes.func,
-    callbackVars: PropTypes.func,
+    callback: PropTypes.func,
+    iconName: PropTypes.string,
 };
 
 const styles = StyleSheet.create({
-    buttonContainer: {
-        width: 320,
-        height: 68,
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: 3,
-        borderWidth: 4,
-        borderRadius: 18
-    },
     button: {
-        borderRadius: 10,
-        backgroundColor: "#7e7e7e",
-        width: '100%',
-        height: '100%',
+        width: '90%',
+        height: 50,
+        borderRadius: 15,
+        borderWidth: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        flexDirection: 'row',
+        marginBottom: 10,
     },
-    buttonLabel: {
+    buttonContent: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    label: {
         fontSize: 16,
+        fontWeight: 'bold',
+    },
+    icon: {
+        paddingRight: 8,
     },
 });
