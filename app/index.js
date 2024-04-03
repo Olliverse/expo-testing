@@ -8,7 +8,7 @@ import Frieren from "../components/Frieren";
 import {Gesture, GestureHandlerRootView} from "react-native-gesture-handler";
 import ThemeSwitch from "../components/ThemeSwitch";
 import {useThemeState} from "../contexts/ThemeContext";
-import ImageDisplayTemplate from "../components/ImageDisplayTemplate";
+import ImageDisplayTemplate from "../components/ImageDisplayPage";
 import RouterPage from "../components/RouterPage";
 
 

@@ -13,13 +13,13 @@ export default function ThemeSwitch() {
     };
 
     return (
-        <View style={[styles.container, {backgroundColor: theme.background}]}>
+        <View style={[styles.container, {backgroundColor: theme.primary3}]}>
             <Text style={[styles.label, {color: theme.text}]}>
-                Dark Mode
+                {darkMode ? "Dark" : "Light"} Mode
             </Text>
             <Switch
-                trackColor={{false: light.primary2, true: dark.primary2}}
-                thumbColor={darkMode ? dark.primary3 : light.primary3}
+                trackColor={{false: light.primary1, true: dark.primary1}}
+                thumbColor={darkMode ? dark.primary2 : light.primary2}
                 onValueChange={toggleDarkMode}
                 value={darkMode}
                 style={styles.switch}
