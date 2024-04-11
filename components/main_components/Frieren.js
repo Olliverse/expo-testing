@@ -29,7 +29,7 @@ export default function Frieren() {
 
     const getAssets = (chapter) => {
         let assets = []
-        for (let page = 1; page <= 4; page++) {
+        for (let page = 1; page <= 30; page++) {
             assets.push(getAsset(chapter, page))
         }
         return assets;

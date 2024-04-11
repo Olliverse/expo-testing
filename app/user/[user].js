@@ -1,6 +1,6 @@
 import React from "react";
 import {StatusBar, StyleSheet, Text, View} from "react-native";
-import {Link, useLocalSearchParams} from "expo-router";
+import {Link, router, useLocalSearchParams} from "expo-router";
 import {useThemeState} from "../../contexts/ThemeContext";
 import {getAuth, signOut} from "firebase/auth";
 import Button from "../../components/commons/Button";
@@ -18,6 +18,7 @@ export default function User() {
         try {
             await signOut(auth);
             setUser(undefined);
+            router.replace("/")
         } catch (error) {
             console.error("Error signing out:", error.message);
         }

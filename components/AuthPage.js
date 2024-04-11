@@ -27,7 +27,6 @@ export default function AuthScreen() {
     const handleSignUp = async () => {
         try {
             await createUserWithEmailAndPassword(auth, email, password);
-            Alert.alert('Success', 'Account created successfully');
         } catch (error) {
             console.log(error.message)
             Alert.alert('Error', error.message);
@@ -37,7 +36,6 @@ export default function AuthScreen() {
     const handleSignIn = async () => {
         try {
             await signInWithEmailAndPassword(auth, email, password);
-            Alert.alert('Success', 'Signed in successfully');
         } catch (error) {
             console.log(error.message)
             Alert.alert('Error', error.message);
