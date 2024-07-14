@@ -1,12 +1,20 @@
 import TestRoute from "../../components/commons/TestRoute";
-import React from "react";
-import {useLocalSearchParams} from "expo-router";
+import React, {useEffect} from "react";
+import {useLocalSearchParams, useNavigation} from "expo-router";
 import {StyleSheet, Text, View} from "react-native";
 import {useThemeState} from "../../contexts/ThemeContext";
 
 export default function SomeVar() {
+    const navigation = useNavigation();
     const {some_var} = useLocalSearchParams();
     const {theme} = useThemeState();
+
+    useEffect(() => {
+        navigation.setOptions({
+            headerShown: true,
+            title: `/recursive/${some_var}`
+        });
+    }, [navigation]);
 
     return (
         <>

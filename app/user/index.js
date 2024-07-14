@@ -1,5 +1,4 @@
 import React, {useEffect} from "react";
-import {View, Text} from "react-native";
 import {getAuth} from "firebase/auth";
 import {router} from "expo-router";
 
@@ -15,8 +14,7 @@ export default function Test() {
     }, []);
 
     return (
-        <View>
-            <Text>You're not even logged in!</Text>
-        </View>
+        // Nothing to do here since this Component is only used for a redirect
+        <></>
     );
 }

@@ -31,7 +31,7 @@ export default function Hallo() {
                 ))}
             </View>
 
-            <Link replace href="/" style={styles.link}>
+            <Link pop href="/" style={styles.link}>
                 back to start
             </Link>
         </View>

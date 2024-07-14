@@ -1,19 +1,27 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {StatusBar, StyleSheet, Text, View} from "react-native";
-import {Link, router, useLocalSearchParams} from "expo-router";
+import {Link, router, useLocalSearchParams, useNavigation} from "expo-router";
 import {useThemeState} from "../../contexts/ThemeContext";
 import {getAuth, signOut} from "firebase/auth";
 import Button from "../../components/commons/Button";
 import {useUser} from "../../contexts/UserContext";
 
 export default function User() {
+    const navigation = useNavigation();
     const {user} = useLocalSearchParams();
-
-    const {theme} = useThemeState();
+    const auth = getAuth();
+    // Weil der Varname "user" belegt ist, müssen folgende 2 lines verwendet werden
     const currentUser = useUser().user;
     const setUser = useUser().setUser;
+    const {theme} = useThemeState();
 
-    const auth = getAuth();
+    useEffect(() => {
+        navigation.setOptions({
+            headerShown: true,
+            title: `/user/${user}`
+        });
+    }, [navigation]);
+
     const signOutClicked = async () => {
         try {
             await signOut(auth);
@@ -42,7 +50,7 @@ export default function User() {
 
             <Button label="Logout" callback={signOutClicked} style={{background: theme.secondary1}}/>
 
-            <Link replace href="/" style={[styles.link, {color: theme.secondary1}]}>
+            <Link pop href="/" style={[styles.link, {color: theme.secondary1}]}>
                 Back to Start
             </Link>
         </View>

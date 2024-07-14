@@ -1,5 +1,6 @@
-import {StatusBar} from "expo-status-bar";
-import {View} from "react-native";
+import React from "react";
+import App from "../components/App";
+import {StatusBar, View} from "react-native";
 import Main from "../components/Main";
 import AuthScreen from "../components/AuthPage";
 import {useUser} from "../contexts/UserContext";
@@ -9,11 +10,10 @@ import {useUser} from "../contexts/UserContext";
 * */
 export default function AppContainer() {
     const {user} = useUser()
-
     return (
         <View>
             <StatusBar style="auto"/>
-            { user ? <Main/> : <AuthScreen/>}
+            {user ? <Main/> : <AuthScreen/>}
         </View>
     );
 }
