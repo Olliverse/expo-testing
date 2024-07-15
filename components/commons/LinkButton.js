@@ -8,7 +8,7 @@ export default function LinkButton({label, path, style}) {
     const {theme} = useThemeState();
 
     return (
-        <Link href={path} asChild >
+        <Link href={path} asChild>
             <Pressable style={style}>
                 <Text style={[styles.link, {color: theme.primary1}]}>
                     {label}

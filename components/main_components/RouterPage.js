@@ -2,7 +2,6 @@ import React from 'react';
 import {StyleSheet, Text, View} from "react-native";
 import LinkButton from "../commons/LinkButton";
 import {useThemeState} from "../../contexts/ThemeContext";
-import {Stack} from "expo-router";
 
 export default function RouterPage() {
     const {theme} = useThemeState();

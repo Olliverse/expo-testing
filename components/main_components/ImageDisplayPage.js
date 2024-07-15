@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Alert } from 'react-native';
+import React, {useState} from 'react';
+import {Alert} from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import ImageViewer from '../commons/ImageViewer';
 import Button from "../commons/Button";
@@ -36,9 +36,9 @@ const ImageDisplayTemplate = () => {
 
     return (
         <>
-            <ImageViewer img={selectedImage ? selectedImage : require('../../assets/images/main_image.png')} />
-            <Button label="Choose a photo" callback={choosePhotoClicked} style={{ marginTop: 20 }} />
-            <Button label="Use this photo" callback={useThisPhotoClicked} style={{ marginTop: 5 }} />
+            <ImageViewer img={selectedImage ? selectedImage : require('../../assets/images/main_image.png')}/>
+            <Button label="Choose a photo" callback={choosePhotoClicked} style={{marginTop: 20}}/>
+            <Button label="Use this photo" callback={useThisPhotoClicked} style={{marginTop: 5}}/>
         </>
     );
 };

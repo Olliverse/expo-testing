@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Alert, StyleSheet, Text, TextInput, View} from 'react-native';
-import {getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword} from "firebase/auth";
+import {createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword} from "firebase/auth";
 import {useThemeState} from "../contexts/ThemeContext";
 import Button from "./commons/Button";
 import {useUser} from "../contexts/UserContext";

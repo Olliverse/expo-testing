@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, Dimensions} from 'react-native';
+import {Dimensions, StyleSheet, View} from 'react-native';
 import {Gesture, GestureHandlerRootView} from "react-native-gesture-handler";
 import HorizontalSwipeView from "./main_components/HorizontalSwipeView";
 import ThemeSwitch from "./main_components/ThemeSwitch";

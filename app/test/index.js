@@ -6,7 +6,7 @@ export default function Test() {
     const navigation = useNavigation();
 
     useEffect(() => {
-        navigation.setOptions({ headerShown: false });
+        navigation.setOptions({headerShown: false});
     }, [navigation]);
 
     return (
