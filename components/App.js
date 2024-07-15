@@ -8,7 +8,7 @@ export default function App() {
     return (
         <Stack screenOptions={{
             animation: "slide_from_bottom",
-            headerShown: true,
+            headerShown: false,
             headerStyle: {
                 backgroundColor: theme.primary1,
             },
@@ -17,6 +17,5 @@ export default function App() {
                 fontWeight: 'bold',
             }
         }}/>
-        // <Stack />
     );
 }
