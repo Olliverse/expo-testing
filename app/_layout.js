@@ -10,7 +10,6 @@ import App from "../components/App";
 export default function HomeLayout() {
     require("../firebaseConfig");
 
-
     return (
         <ThemeProvider>
             <AuthProvider>

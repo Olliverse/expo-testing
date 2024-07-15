@@ -1,5 +1,4 @@
 import React from "react";
-import App from "../components/App";
 import {StatusBar, View} from "react-native";
 import Main from "../components/Main";
 import AuthScreen from "../components/AuthPage";

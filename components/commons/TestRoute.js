@@ -21,7 +21,7 @@ export default function TestRoute({defaultRoute = "test/idk"}) {
 
     function routeHome(path) {
         resetCurrentPage()
-        router.push(path);
+        router.navigate(path);
     }
 
     return (
