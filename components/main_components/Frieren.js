@@ -6,22 +6,30 @@ import ZoomableImage from "../commons/ZoomableImage";
 import MiniButton from "../commons/MiniButton";
 import {useThemeState} from "../../contexts/ThemeContext";
 
+function formatWithLeadingZeros(number, length) {
+    return number.toString().padStart(length, '0');
+}
+
+
 export default function Frieren() {
     const {theme} = useThemeState();
     const flatListRef = useRef();
-    const [chapter, setChapter] = useState(28);
+    const [chapter, setChapter] = useState(111);
 
     useEffect(() => {
         scrollToTop();
     }, [chapter]);
 
     const scrollToTop = () => {
-        flatListRef.current.scrollToOffset({offset: 0, animated: true});
+        flatListRef.current.scrollToIndex({index: 0, animated: true});
     };
+
 
     const getAsset = (chapter, page) => {
         try {
-            return Asset.fromURI(`https://cdn.hxmanga.com/file/sworldnoox/sousou-no-frieren/chapter-${chapter}/${page}.webp`);
+            const url = `https://scans.lastation.us/manga/Sousou-no-Frieren/${formatWithLeadingZeros(chapter,4)}-${formatWithLeadingZeros(page, 3)}.png`
+            console.log(url)
+            return Asset.fromURI(url);
         } catch (e) {
             console.log(`Error when loading asset with chapter ${chapter} and page ${page}`, e)
         }
@@ -37,7 +45,9 @@ export default function Frieren() {
 
     const assets = useMemo(
         () => {
-            return getAssets(chapter)
+            const a = getAssets(chapter)
+            console.log(a.length)
+            return a
         },
         [chapter]
     );
