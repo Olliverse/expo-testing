@@ -28,7 +28,6 @@ export default function Frieren() {
     const getAsset = (chapter, page) => {
         try {
             const url = `https://scans.lastation.us/manga/Sousou-no-Frieren/${formatWithLeadingZeros(chapter,4)}-${formatWithLeadingZeros(page, 3)}.png`
-            console.log(url)
             return Asset.fromURI(url);
         } catch (e) {
             console.log(`Error when loading asset with chapter ${chapter} and page ${page}`, e)
@@ -45,9 +44,7 @@ export default function Frieren() {
 
     const assets = useMemo(
         () => {
-            const a = getAssets(chapter)
-            console.log(a.length)
-            return a
+            return getAssets(chapter)
         },
         [chapter]
     );
