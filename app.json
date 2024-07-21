@@ -16,7 +16,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "oliver.rausch.ExpoTest"
     },
     "android": {
       "adaptiveIcon": {
@@ -43,6 +44,14 @@
           }
         }
       ]
-    ]
+    ],
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "c4edaaf2-c33c-45b1-a14e-3b1dda0e2ecd"
+      }
+    }
   }
 }
