@@ -4,15 +4,14 @@
   "main": "expo-router/entry",
   "scripts": {
     "start": "expo start",
-    "run": "expo run:android --variant release",
     "tunnel": "expo start --tunnel",
     "build": "eas build",
     "build-a": "eas build --platform android --local",
     "build-i": "eas build --platform ios --local",
     "prebuild": "expo prebuild",
     "ios": "expo run:ios",
-    "web": "expo start --web",
-    "android": "expo run:android"
+    "android": "expo run:android",
+    "web": "expo start --web"
   },
   "dependencies": {
     "@expo/image-utils": "^0.5.1",
