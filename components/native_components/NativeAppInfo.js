@@ -51,7 +51,7 @@ export default function NativeAppInfo() {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 0.3,
+        flex: 0.4,
         alignItems: 'center',
         justifyContent: "center",
     },
