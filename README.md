@@ -1,27 +1,30 @@
-# Expo Rumspielerei
+# Expo Framework mit Beispielen
 
 Ein paar use cases für das Expo Framework im Rahmen einer kleinen PA.
 
-Darunter:
+Darunter werden folgende Funktionalitäten eingebunden:
 
-- Login mit Firebase
-- Native Komponenten wie Gyrosensor oder Bildselektion
-- Kontexte für Login/Theme/MomentaneSeite
-- Dark-/Lightmode
-- Expo Router Module
-- Liste von Elementen
-- Swipable View mit Animation
+- Einbindung von nativen Komponenten von der Expo-SDK:
+  - Bildwahl aus Album -> expo-image-picker
+  - App & Geräteinformation -> expo-application
+  - Geräteinformation bzgl. Sensorik -> expo-sensors
+- React Kontexte für
+  - Login
+  - Theme
+  - Page
+- Dark mode Switch
+- Swipeable View mit Animation (Eigene Kreation für eine bessere Startseite)
+- Use-cases:
+  - Authentifizierung via Firebase
+  - Liste von Elementen
+  - Expo Router Module
 
-Ersteller: Oliver Rausch
-Featuring: ChatGPT & Expo Docs
+Author: Oliver Rausch
 
-# Starten
-
-- `npm install`
-- Wenn mans aufm Handy mit Expo Go machen will `npm run tunnel`, ansonsten `npm run start` und dann mit Android-/iOs
-  Emulator
-    - Wenn man es dann nicht aufm Handy benutzen kann: Man muss ich gleichen WLAN sein.
-      Falls eine komische Fehlermeldung kommt einmal probieren einen Expo Account zu erstellen und dann
-      `expo login` auf der cli und beim Handy.
-
-Sollte aber out-of-the-box gehen
+# Lokales Starten über Expo Go
+1. Expo GO auf iOS oder Android herunterladen (geht auch auf Emulatoren)
+2. Expo Account erstellen und in Expo GO einloggen
+3. `npm install` ausführen
+4. `expo login` ausführen, um sich bei den Expo Services anzumelden. 
+5. `npm run start` oder `npm run tunnel` ausführen, um den Bundler zu starten. (**Bedingung ist, dass sich mit dem Bundler im selben Netzwerk befindet**
+   Letzterer Befehl verwendet einen Tunnel über den Service von `ngrok`, falls die Netzwerkkonfiguration "zu sicher" eingestellt ist.

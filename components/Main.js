@@ -3,9 +3,9 @@ import {Dimensions, StyleSheet, View} from 'react-native';
 import {Gesture, GestureHandlerRootView} from "react-native-gesture-handler";
 import HorizontalSwipeView from "./main_components/HorizontalSwipeView";
 import ThemeSwitch from "./main_components/ThemeSwitch";
-import ImageDisplayTemplate from "./main_components/ImageDisplayPage";
-import Accelerator from "./native_components/Accelerator";
-import RandomAppInfo from "./native_components/RandomAppInfo";
+import NativeImageSelection from "./native_components/ImageDisplayPage";
+import NativeSensor from "./native_components/NativeSensor";
+import NativeAppInfo from "./native_components/NativeAppInfo";
 import RouterPage from "./main_components/RouterPage";
 import Frieren from "./main_components/Frieren";
 import {useThemeState} from "../contexts/ThemeContext";
@@ -23,15 +23,12 @@ export default function Main() {
                 </View>
 
                 <View style={styles.innerContainer}>
-                    <ImageDisplayTemplate/>
+                    <NativeImageSelection/>
                 </View>
 
                 <View style={styles.innerContainer}>
-                    <Accelerator/>
-                </View>
-
-                <View style={styles.innerContainer}>
-                    <RandomAppInfo/>
+                    <NativeSensor/>
+                    <NativeAppInfo/>
                 </View>
 
                 <View style={styles.innerContainer}>

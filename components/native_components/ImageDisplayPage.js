@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
-import {Alert} from 'react-native';
+import {Alert, StyleSheet, Text} from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import ImageViewer from '../commons/ImageViewer';
 import Button from "../commons/Button";
 
-const ImageDisplayTemplate = () => {
+export default function NativeImageSelection() {
     const [selectedImage, setSelectedImage] = useState(null);
 
     const choosePhotoClicked = async () => {
@@ -36,6 +36,7 @@ const ImageDisplayTemplate = () => {
 
     return (
         <>
+            <Text style={styles.title}>Image display and selection (expo-image-picker)</Text>
             <ImageViewer img={selectedImage ? selectedImage : require('../../assets/images/main_image.png')}/>
             <Button label="Choose a photo" callback={choosePhotoClicked} style={{marginTop: 20}}/>
             <Button label="Use this photo" callback={useThisPhotoClicked} style={{marginTop: 5}}/>
@@ -43,4 +44,11 @@ const ImageDisplayTemplate = () => {
     );
 };
 
-export default ImageDisplayTemplate;
+const styles = StyleSheet.create({
+    title: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        marginBottom: 20,
+    }
+});

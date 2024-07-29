@@ -5,7 +5,7 @@ import MiniButton from '../commons/MiniButton';
 import {useThemeState} from '../../contexts/ThemeContext';
 import Button from "../commons/Button";
 
-export default function Accelerator() {
+export default function NativeSensor() {
     const {theme} = useThemeState();
 
     const [{x, y, z}, setData] = useState({
@@ -77,7 +77,7 @@ export default function Accelerator() {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flex: 0.1,
         alignItems: 'center',
         justifyContent: "center",
     },
