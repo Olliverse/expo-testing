@@ -25,5 +25,7 @@
   "not-set": "not set",
   "due-to-uid": "due to the UID",
   "hidden-page": "Hey, you just found a hidden page!",
-  "your-ads": "This is where your advertisement could be!"
+  "your-ads": "This is where your advertisement could be!",
+  "theme-selection": "Select a theme",
+  "language-selection": "Select your Language"
 }

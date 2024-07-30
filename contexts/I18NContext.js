@@ -27,12 +27,13 @@ const I18NContext = createContext(undefined);
 
 export const I18NProvider = ({children}) => {
     const [language, setLanguage] = useState(getInitialLanguage());
-    const [i18n] = useState(getI18NForLanguage(getInitialLanguage()));
+    const [i18n, setI18n] = useState(getI18NForLanguage(getInitialLanguage()));
 
     useEffect(() => {
-        // Only update the language instead of replacing the complete object
+        console.log("Rerender the language shit")
         if (language && i18n) {
-            i18n.locale = language;
+            // Only update the language instead of replacing the complete object
+            setI18n(getI18NForLanguage(language))
         }
     }, [language]);
 

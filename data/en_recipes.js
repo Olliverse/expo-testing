@@ -1,4 +1,4 @@
-const recipeData = [
+const en_recipes = [
     {
         id: 1,
         name: "Spaghetti Carbonara",
@@ -61,4 +61,4 @@ const recipeData = [
     }
 ];
 
-export default recipeData;
+export default en_recipes;

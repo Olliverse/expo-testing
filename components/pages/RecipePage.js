@@ -2,12 +2,13 @@ import {StyleSheet, Text, View} from 'react-native';
 import React from "react";
 import {useThemeState} from "../../contexts/ThemeContext";
 import {Card, Paragraph, Title} from 'react-native-paper';
-import recipeData from "../../data/RecipeData";
+import en_recipes from "../../data/en_recipes";
 import {FlatList} from "react-native-gesture-handler";
 import {useI18NState} from "../../contexts/I18NContext";
+import de_recipes from "../../data/de_recipes";
 
 export default function RecipePage() {
-    const {i18n} = useI18NState()
+    const {language, i18n} = useI18NState()
     const {theme} = useThemeState();
 
     const recipeItem = ({item}) => (
@@ -26,7 +27,7 @@ export default function RecipePage() {
                 {i18n.t("recipes-title")}
             </Text>
             <FlatList
-                data={recipeData}
+                data={language === "de" ? de_recipes : en_recipes}
                 renderItem={recipeItem}
                 contentContainerStyle={styles.flatListContainer}
                 showsVerticalScrollIndicator={true}
