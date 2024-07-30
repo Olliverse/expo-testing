@@ -2,11 +2,12 @@ import React, {useState} from 'react';
 import {StyleSheet, Switch, Text, View} from 'react-native';
 import {dark, light} from "../../styles/colors";
 import {useThemeState} from "../../contexts/ThemeContext";
+import {useI18NState} from "../../contexts/I18NContext";
 
 export default function SwitchPage() {
     const {theme, setTheme} = useThemeState();
     const [darkMode, setDarkMode] = useState(theme === dark);
-    const [language, setLanguage] = useState("DE");
+    const {language, setLanguage, i18n} = useI18NState();
 
     const toggleDarkMode = () => {
         setDarkMode(!darkMode);
@@ -14,10 +15,10 @@ export default function SwitchPage() {
     };
 
     const toggleLanguage = () => {
-        if (language === "DE") {
-            setLanguage("EN");
+        if (language === "de") {
+            setLanguage("en");
         } else {
-            setLanguage("DE");
+            setLanguage("de");
         }
         // TODO: Update the rest of the application / save to context maybe
     };
@@ -40,13 +41,13 @@ export default function SwitchPage() {
             </View>
             <View style={[styles.switchContainer, {backgroundColor: theme.primary2}]}>
                 <Text style={[styles.label, {color: theme.text}]}>
-                    {language === "DE" ? "DE" : "EN"}
+                    {language === "de" ? "de" : "en"}
                 </Text>
                 <Switch
                     trackColor={{false: theme.secondary2, true: theme.primary3}}
-                    thumbColor={language === "DE" ? theme.primary1 : theme.secondary1}
+                    thumbColor={language === "de" ? theme.primary1 : theme.secondary1}
                     onValueChange={toggleLanguage}
-                    value={language === "DE"}
+                    value={language === "de"}
                     style={styles.switch}
                     width={50}
                     height={30}

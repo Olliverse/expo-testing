@@ -4,10 +4,13 @@ import * as ImagePicker from 'expo-image-picker';
 import {useThemeState} from "../../contexts/ThemeContext";
 import ImageViewer from "../custom/ImageViewer";
 import Button from "../custom/Button";
+import {useI18NState} from "../../contexts/I18NContext";
 
 export default function NativeImageSelection() {
     const {theme} = useThemeState();
     const [selectedImage, setSelectedImage] = useState(null);
+
+    const {i18n} = useI18NState()
 
     const choosePhotoClicked = async () => {
         try {
@@ -39,6 +42,7 @@ export default function NativeImageSelection() {
     return (
         <>
             <Text style={[styles.title, {color: theme.text}]}>Image display and selection (expo-image-picker)</Text>
+            <Text>{i18n.t("exploit")}</Text>
             <ImageViewer img={selectedImage ? selectedImage : require('../../assets/main_image.png')}/>
             <Button label="Choose a photo" callback={choosePhotoClicked} style={{marginTop: 20}}/>
             <Button label="Use this photo" callback={useThisPhotoClicked} style={{marginTop: 5}}/>
