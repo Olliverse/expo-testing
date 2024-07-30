@@ -21,7 +21,7 @@ export default function Hallo() {
         <View style={[styles.mainContainer, {backgroundColor: theme.background}]}>
             <View style={[styles.textBox, {borderColor: theme.primary3}]}>
                 <Text style={[styles.text, {color: theme.text, fontWeight: "bold"}]}>
-                    Current Route is: {hallo}
+                    {i18n.t("route-current")}: {hallo}
                 </Text>
                 {testData.map(item => (
                     <Text key={item.id} style={[styles.text, {color: theme.text}]}>

@@ -33,7 +33,7 @@ export default function TestRoute({defaultRoute = "test/idk"}) {
                 onChangeText={setNewRoute}
                 value={newRoute}
             />
-            <Button label={`${i18n.t("route-to")} + ${newRoute}`} style={styles.button}
+            <Button label={`${i18n.t("route-to")} ${newRoute}`} style={styles.button}
                     callback={() => routeTo(newRoute)}
                     iconName="arrow-right"/>
             <Button label={i18n.t("route-back")} style={styles.button} callback={() => routeBack()}
