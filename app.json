@@ -1,12 +1,11 @@
 {
   "expo": {
-    "name": "ExpoTesting",
-    "slug": "ExpoTesting",
+    "name": "PA Konzeptionelle Untersuchung von Expo",
+    "slug": "concepts-expo-pa",
     "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-    "scheme": "offapptest123",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
