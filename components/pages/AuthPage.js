@@ -2,8 +2,8 @@ import React, {useEffect, useState} from 'react';
 import {Alert, StyleSheet, Text, TextInput, View} from 'react-native';
 import {createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword} from "firebase/auth";
 import {useThemeState} from "../../contexts/ThemeContext";
-import Button from "../commons/Button";
 import {useUser} from "../../contexts/UserContext";
+import Button from "../custom/Button";
 
 export default function AuthScreen() {
     const {theme} = useThemeState();

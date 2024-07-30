@@ -1,9 +1,9 @@
 import {useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {Accelerometer} from 'expo-sensors';
-import MiniButton from '../commons/MiniButton';
 import {useThemeState} from '../../contexts/ThemeContext';
-import Button from "../commons/Button";
+import MiniButton from "../custom/MiniButton";
+import Button from "../custom/Button";
 
 export default function NativeSensor() {
     const {theme} = useThemeState();

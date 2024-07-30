@@ -2,9 +2,9 @@ import {StyleSheet, Text, View} from 'react-native';
 import {Asset} from "expo-asset";
 import React, {useEffect, useMemo, useRef, useState} from "react";
 import {FlatList} from "react-native-gesture-handler";
-import ZoomableImage from "../commons/ZoomableImage";
-import MiniButton from "../commons/MiniButton";
 import {useThemeState} from "../../contexts/ThemeContext";
+import MiniButton from "../custom/MiniButton";
+import FullWidthImage from "../custom/FullWidthImage";
 
 function formatWithLeadingZeros(number, length) {
     return number.toString().padStart(length, '0');
@@ -64,7 +64,7 @@ export default function MangaPage() {
                 ref={flatListRef}
                 showsVerticalScrollIndicator={false}
                 data={assets}
-                renderItem={({item}) => <ZoomableImage img={item}/>}
+                renderItem={({item}) => <FullWidthImage img={item}/>}
                 style={{marginTop: 5}}
             />
         </View>

@@ -11,9 +11,8 @@ export default function AppContainer() {
     const {user} = useUser()
     return (
         <View>
-            <StatusBar style="auto"/>
+            <StatusBar animated/>
             {user ? <Main/> : <AuthScreen/>}
         </View>
     );
 }
-

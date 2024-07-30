@@ -1,10 +1,10 @@
 import React, {useEffect} from "react";
-import {StatusBar, StyleSheet, Text, View} from "react-native";
+import {StyleSheet, Text, View} from "react-native";
 import {Link, router, useLocalSearchParams, useNavigation} from "expo-router";
 import {useThemeState} from "../../contexts/ThemeContext";
 import {getAuth, signOut} from "firebase/auth";
-import Button from "../../components/commons/Button";
 import {useUser} from "../../contexts/UserContext";
+import Button from "../../components/custom/Button";
 
 export default function User() {
     const navigation = useNavigation();
@@ -34,11 +34,9 @@ export default function User() {
 
     return (
         <View style={[styles.mainContainer, {backgroundColor: theme.background}]}>
-            <StatusBar style="auto"/>
-
             <View style={[styles.textBox, {borderColor: theme.primary3}]}>
                 <Text style={[styles.text, {color: theme.text, fontWeight: "bold"}]}>
-                    Route is: {user} -> wegen UID
+                    Route is: {user} -&gt wegen UID
                 </Text>
                 <Text style={[styles.text, {color: theme.text}]}>
                     Name: {currentUser ? currentUser.username : "nicht gesetzt"}

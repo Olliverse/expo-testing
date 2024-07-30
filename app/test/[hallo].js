@@ -1,4 +1,3 @@
-import {StatusBar} from "expo-status-bar";
 import {StyleSheet, Text, View} from "react-native";
 import {Link, useLocalSearchParams} from "expo-router";
 import {useThemeState} from "../../contexts/ThemeContext";
@@ -18,8 +17,6 @@ export default function Hallo() {
 
     return (
         <View style={[styles.mainContainer, {backgroundColor: theme.background}]}>
-            <StatusBar style="auto"/>
-
             <View style={[styles.textBox, {borderColor: theme.primary3}]}>
                 <Text style={[styles.text, {color: theme.text, fontWeight: "bold"}]}>
                     Current Route is: {hallo}

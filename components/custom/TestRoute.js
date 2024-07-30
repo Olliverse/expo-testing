@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {StatusBar, StyleSheet, TextInput, View} from 'react-native';
+import {StyleSheet, TextInput, View} from 'react-native';
 import {router} from "expo-router";
 import Button from "./Button";
 import {useThemeState} from "../../contexts/ThemeContext";
@@ -26,7 +26,6 @@ export default function TestRoute({defaultRoute = "test/idk"}) {
 
     return (
         <View style={[styles.mainContainer, {backgroundColor: theme.background}]}>
-            <StatusBar style="auto"/>
             <TextInput
                 style={[styles.input, {borderColor: theme.primary1, color: theme.text}]}
                 onChangeText={setNewRoute}

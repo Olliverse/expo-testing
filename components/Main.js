@@ -1,15 +1,15 @@
 import React from 'react';
 import {Dimensions, StyleSheet, View} from 'react-native';
 import {Gesture, GestureHandlerRootView} from "react-native-gesture-handler";
-import HorizontalSwipeView from "./main_components/HorizontalSwipeView";
-import ThemeSwitch from "./main_components/ThemeSwitchPage";
-import NativeImageSelection from "./main_components/ImageDisplayPage";
+import HorizontalSwipeView from "./custom/HorizontalSwipeView";
+import NativeImageSelection from "./pages/ImageDisplayPage";
 import NativeSensor from "./native_components/NativeSensor";
 import NativeAppInfo from "./native_components/NativeAppInfo";
-import RouterPage from "./main_components/RouterPage";
-import Frieren from "./main_components/MangaPage";
+import RouterPage from "./pages/RouterPage";
+import Frieren from "./pages/MangaPage";
 import {useThemeState} from "../contexts/ThemeContext";
-import Recipes from "./main_components/RecipePage";
+import Recipes from "./pages/RecipePage";
+import SwitchPage from "./pages/SwitchPage";
 
 
 export default function Main() {
@@ -20,7 +20,7 @@ export default function Main() {
         <GestureHandlerRootView style={[styles.gestureContainer, {backgroundColor: theme.background}]}>
             <HorizontalSwipeView horizontalSwipeGesture={horizontalSwipeGesture}>
                 <View style={styles.innerContainer}>
-                    <ThemeSwitch/>
+                    <SwitchPage/>
                 </View>
 
                 <View style={styles.innerContainer}>

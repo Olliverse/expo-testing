@@ -8,8 +8,8 @@ import {FlatList} from "react-native-gesture-handler";
 export default function RecipePage() {
     const {theme} = useThemeState();
 
-    const renderItem = ({item}) => (
-        <Card key={item.id} style={[styles.card, {backgroundColor: theme.primary2}]}>
+    const recipeItem = ({item}) => (
+        <Card key={item.id} style={[styles.card, {backgroundColor: theme.primary3}]}>
             <Card.Cover source={item.image}/>
             <Card.Content>
                 <Title>{item.name}</Title>
@@ -25,8 +25,7 @@ export default function RecipePage() {
             </Text>
             <FlatList
                 data={recipeData}
-                renderItem={renderItem}
-                keyExtractor={item => item.id.toString()}
+                renderItem={recipeItem}
                 contentContainerStyle={styles.flatListContainer}
                 showsVerticalScrollIndicator={true}
             />

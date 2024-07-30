@@ -1,8 +1,8 @@
-import TestRoute from "../../components/commons/TestRoute";
 import React, {useEffect} from "react";
 import {useLocalSearchParams, useNavigation} from "expo-router";
 import {StyleSheet, Text, View} from "react-native";
 import {useThemeState} from "../../contexts/ThemeContext";
+import TestRoute from "../../components/custom/TestRoute";
 
 export default function SomeVar() {
     const navigation = useNavigation();

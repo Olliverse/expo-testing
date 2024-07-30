@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import {Alert, StyleSheet, Text} from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
-import ImageViewer from '../commons/ImageViewer';
-import Button from "../commons/Button";
 import {useThemeState} from "../../contexts/ThemeContext";
+import ImageViewer from "../custom/ImageViewer";
+import Button from "../custom/Button";
 
 export default function NativeImageSelection() {
     const {theme} = useThemeState();

@@ -4,10 +4,11 @@ import PropTypes from "prop-types";
 
 /*
 * TODO
-*  This component may be named Zoomable but zoom is NOT YET IMPLEMENTED.
+*  NOT YET IMPLEMENTED.
+*  This component may be named Zoomable but zoom is
 *  Its kinda hard since its combined with gesture to swipe left/right & up/down
 * */
-export default function ZoomableImage({img}) {
+export default function FullWidthImage({img}) {
     return (
         <SafeAreaView>
             <Image
@@ -19,7 +20,7 @@ export default function ZoomableImage({img}) {
     );
 }
 
-ZoomableImage.propTypes = {
+FullWidthImage.propTypes = {
     img: PropTypes.object,
 };
 
