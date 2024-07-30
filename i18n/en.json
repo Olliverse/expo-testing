@@ -2,6 +2,7 @@
   "undefined": "undefined",
   "expo-application-info": "Information from Native API (expo-application)",
   "expo-sensors-info": "Information from Native Accelerometer API (expo-sensors)",
+  "image-info": "Image display and selection (expo-image-picker)",
   "slow": "slow",
   "fast": "fast",
   "route-to": "Route to",

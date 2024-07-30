@@ -42,7 +42,7 @@ export default function NativeImageSelection() {
 
     return (
         <>
-            <Text style={[styles.title, {color: theme.text}]}>Image display and selection (expo-image-picker)</Text>
+            <Text style={[styles.title, {color: theme.text}]}>{i18n.t("image-info")}</Text>
             <ImageViewer img={selectedImage ? selectedImage : require('../../assets/main_image.png')}/>
             <Button label={i18n.t("choose-photo")} callback={choosePhotoClicked} style={{marginTop: 20}}/>
             <Button label={i18n.t("use-photo")} callback={useThisPhotoClicked} style={{marginTop: 5}}/>

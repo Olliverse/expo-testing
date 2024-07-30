@@ -1,4 +1,4 @@
-import React, {createContext, useContext, useEffect, useMemo, useState} from 'react';
+import React, {createContext, useContext, useEffect, useState} from 'react';
 import PropTypes from "prop-types";
 import {getLocales} from 'expo-localization';
 import {I18n} from "i18n-js";
@@ -30,19 +30,11 @@ export const I18NProvider = ({children}) => {
     const [i18n, setI18n] = useState(getI18NForLanguage(getInitialLanguage()));
 
     useEffect(() => {
-        console.log("Rerender the language shit")
-        if (language && i18n) {
-            // Only update the language instead of replacing the complete object
-            setI18n(getI18NForLanguage(language))
-        }
-    }, [language]);
-
-    const context = useMemo(() => {
-        return {language: language, setLanguage: setLanguage, i18n: i18n};
+        setI18n(getI18NForLanguage(language));
     }, [language]);
 
     return (
-        <I18NContext.Provider value={context}>
+        <I18NContext.Provider value={{language: language, setLanguage: setLanguage, i18n: i18n}}>
             {children}
         </I18NContext.Provider>
     );

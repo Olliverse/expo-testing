@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, Switch, Text, View} from 'react-native';
 import {dark, light} from "../../styles/colors";
 import {useThemeState} from "../../contexts/ThemeContext";
@@ -22,13 +22,9 @@ export default function SwitchPage() {
         }
     };
 
-    useEffect(() => {
-        console.log(language)
-    }, [language]);
-
     return (
         <View style={styles.mainContainer}>
-            <Text style={styles.title}>{i18n.t("theme-selection")}</Text>
+            <Text style={[styles.title, {color: theme.text}]}>{i18n.t("theme-selection")}</Text>
             <View style={[styles.switchContainer, {backgroundColor: theme.primary2}]}>
                 <Text style={[styles.label, {color: theme.text}]}>
                     {darkMode ? i18n.t("dark") : i18n.t("light")}
@@ -43,7 +39,7 @@ export default function SwitchPage() {
                     height={30}
                 />
             </View>
-            <Text style={styles.title}>{i18n.t("language-selection")}</Text>
+            <Text style={[styles.title, {color: theme.text}]}>{i18n.t("language-selection")}</Text>
             <View style={[styles.switchContainer, {backgroundColor: theme.primary2}]}>
                 <Text style={[styles.label, {color: theme.text}]}>
                     {language === "de" ? "de" : "en"}
