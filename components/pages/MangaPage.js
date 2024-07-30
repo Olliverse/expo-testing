@@ -16,11 +16,23 @@ export default function MangaPage() {
     const {i18n} = useI18NState()
     const {theme} = useThemeState();
     const flatListRef = useRef();
+    const [showHeader, setShowHeader] = useState(true);
     const [chapter, setChapter] = useState(111);
 
     useEffect(() => {
         scrollToTop();
     }, [chapter]);
+
+    const onViewableItemsChanged = ({viewableItems}) => {
+        const firstVisibleItem = viewableItems[0];
+        if (firstVisibleItem) {
+            setShowHeader(firstVisibleItem.index === 0);
+        }
+    };
+
+    const viewabilityConfig = {
+        itemVisiblePercentThreshold: 50,
+    };
 
     const scrollToTop = () => {
         flatListRef.current.scrollToIndex({index: 0, animated: true});
@@ -29,6 +41,7 @@ export default function MangaPage() {
 
     const getAsset = (chapter, page) => {
         try {
+            // Diese URL wird wsh. mal gesperrt, weil es sich hierbei um externe Ressourcen handelt
             const url = `https://scans.lastation.us/manga/Sousou-no-Frieren/${formatWithLeadingZeros(chapter, 4)}-${formatWithLeadingZeros(page, 3)}.png`
             return Asset.fromURI(url);
         } catch (e) {
@@ -53,21 +66,33 @@ export default function MangaPage() {
 
     return (
         <View style={styles.container}>
-            <Text style={[styles.title, {color: theme.text}]}>
-                {i18n.t("manga-reader")}
-            </Text>
-            <View style={{display: "flex", flexDirection: 'row', alignItems: "center"}}>
-                <MiniButton iconName={"backward"} callback={() => setChapter(chapter - 1)}></MiniButton>
-                <Text
-                    style={{marginLeft: 20, marginRight: 20, fontSize: 20, color: theme.text}}>Chapter {chapter}</Text>
-                <MiniButton iconName={"forward"} callback={() => setChapter(chapter + 1)}></MiniButton>
-            </View>
+            {showHeader ? (
+                <>
+                    <Text style={[styles.title, {color: theme.text}]}>
+                        {i18n.t("manga-reader")}
+                    </Text>
+                    <View style={{display: "flex", flexDirection: 'row', alignItems: "center"}}>
+                        <MiniButton iconName={"backward"} callback={() => setChapter(chapter - 1)}></MiniButton>
+                        <Text
+                            style={{
+                                marginLeft: 20,
+                                marginRight: 20,
+                                fontSize: 20,
+                                color: theme.text
+                            }}>Chapter {chapter}</Text>
+                        <MiniButton iconName={"forward"} callback={() => setChapter(chapter + 1)}></MiniButton>
+                    </View>
+                </>
+            ) : null
+            }
             <FlatList
                 ref={flatListRef}
                 showsVerticalScrollIndicator={false}
                 data={assets}
                 renderItem={({item}) => <FullWidthImage img={item}/>}
                 style={{marginTop: 5}}
+                onViewableItemsChanged={onViewableItemsChanged}
+                viewabilityConfig={viewabilityConfig}
             />
         </View>
     );

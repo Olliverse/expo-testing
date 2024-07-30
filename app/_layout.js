@@ -13,14 +13,14 @@ export default function HomeLayout() {
 
     return (
 
-            <ThemeProvider>
-                <I18NProvider>
+        <ThemeProvider>
+            <I18NProvider>
                 <AuthProvider>
                     <CurrentPageProvider>
                         <App/>
                     </CurrentPageProvider>
                 </AuthProvider>
-        </I18NProvider>
-            </ThemeProvider>
+            </I18NProvider>
+        </ThemeProvider>
     )
 }

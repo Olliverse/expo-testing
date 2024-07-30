@@ -12,7 +12,6 @@ export default function NativeImageSelection() {
     const [selectedImage, setSelectedImage] = useState(null);
 
 
-
     const choosePhotoClicked = async () => {
         try {
             const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();

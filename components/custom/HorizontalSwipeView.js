@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {Animated, Dimensions, StyleSheet, Text, View} from 'react-native';
+import {Animated, Dimensions, StatusBar, StyleSheet, Text, View} from 'react-native';
 import {GestureDetector} from "react-native-gesture-handler";
 import {useCurrentPageState} from "../../contexts/PageContext";
 import PropTypes from "prop-types";
@@ -35,7 +35,8 @@ const HorizontalSwipeView = ({children, horizontalSwipeGesture}) => {
 
     useEffect(() => {
         translateRef.setValue(0)
-        setChildrenToRender(getSubChildren(childrenArray, currentPage));
+        const newSubChildren = getSubChildren(childrenArray, currentPage)
+        setChildrenToRender(newSubChildren);
     }, [currentPage]);
 
     const shouldSwipeLeft = (translation) => {
@@ -90,18 +91,23 @@ const HorizontalSwipeView = ({children, horizontalSwipeGesture}) => {
         })
 
     return (
-        <GestureDetector gesture={horizontalSwipeGesture}>
-            <Animated.View
-                style={[
-                    styles.swipeContainer,
-                    {
-                        transform: [{translateX: translateRef}],
-                        width: "300%"
-                    }
-                ]}>
-                {childrenToRender}
-            </Animated.View>
-        </GestureDetector>
+        <>
+            {childrenArray[currentPage - 1].props.children.props.hideStatusbar === true ? (
+                <StatusBar animated hidden/>) : null}
+
+            <GestureDetector gesture={horizontalSwipeGesture}>
+                <Animated.View
+                    style={[
+                        styles.swipeContainer,
+                        {
+                            transform: [{translateX: translateRef}],
+                            width: "300%"
+                        }
+                    ]}>
+                    {childrenToRender}
+                </Animated.View>
+            </GestureDetector>
+        </>
     );
 };
 

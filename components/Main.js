@@ -6,9 +6,9 @@ import NativeImageSelection from "./pages/ImageDisplayPage";
 import NativeSensor from "./native_components/NativeSensor";
 import NativeAppInfo from "./native_components/NativeAppInfo";
 import RouterPage from "./pages/RouterPage";
-import Frieren from "./pages/MangaPage";
+import MangaPage from "./pages/MangaPage";
 import {useThemeState} from "../contexts/ThemeContext";
-import Recipes from "./pages/RecipePage";
+import RecipePage from "./pages/RecipePage";
 import SwitchPage from "./pages/SwitchPage";
 
 
@@ -28,12 +28,14 @@ export default function Main() {
                 </View>
 
                 <View style={styles.innerContainer}>
-                    <Recipes/>
+                    <RecipePage/>
                 </View>
 
                 <View style={styles.innerContainer}>
-                    <NativeSensor/>
-                    <NativeAppInfo/>
+                    <>
+                        <NativeSensor/>
+                        <NativeAppInfo/>
+                    </>
                 </View>
 
                 <View style={styles.innerContainer}>
@@ -41,7 +43,7 @@ export default function Main() {
                 </View>
 
                 <View style={styles.innerContainer}>
-                    <Frieren/>
+                    <MangaPage hideStatusbar={true}/>
                 </View>
             </HorizontalSwipeView>
         </GestureHandlerRootView>
