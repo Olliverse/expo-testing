@@ -11,7 +11,7 @@ function formatWithLeadingZeros(number, length) {
 }
 
 
-export default function Frieren() {
+export default function MangaPage() {
     const {theme} = useThemeState();
     const flatListRef = useRef();
     const [chapter, setChapter] = useState(111);

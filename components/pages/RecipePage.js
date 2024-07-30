@@ -5,11 +5,11 @@ import {Card, Paragraph, Title} from 'react-native-paper';
 import recipeData from "../../data/RecipeData";
 import {FlatList} from "react-native-gesture-handler";
 
-export default function Recipes() {
+export default function RecipePage() {
     const {theme} = useThemeState();
 
     const renderItem = ({item}) => (
-        <Card key={item.id} style={styles.card}>
+        <Card key={item.id} style={[styles.card, {backgroundColor: theme.primary2}]}>
             <Card.Cover source={item.image}/>
             <Card.Content>
                 <Title>{item.name}</Title>

@@ -1,7 +1,7 @@
 import React from "react";
 import {StatusBar, View} from "react-native";
 import Main from "../components/Main";
-import AuthScreen from "../components/AuthPage";
+import AuthScreen from "../components/pages/AuthPage";
 import {useUser} from "../contexts/UserContext";
 
 /*

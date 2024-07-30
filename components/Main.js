@@ -2,14 +2,14 @@ import React from 'react';
 import {Dimensions, StyleSheet, View} from 'react-native';
 import {Gesture, GestureHandlerRootView} from "react-native-gesture-handler";
 import HorizontalSwipeView from "./main_components/HorizontalSwipeView";
-import ThemeSwitch from "./main_components/ThemeSwitch";
-import NativeImageSelection from "./native_components/ImageDisplayPage";
+import ThemeSwitch from "./main_components/ThemeSwitchPage";
+import NativeImageSelection from "./main_components/ImageDisplayPage";
 import NativeSensor from "./native_components/NativeSensor";
 import NativeAppInfo from "./native_components/NativeAppInfo";
 import RouterPage from "./main_components/RouterPage";
-import Frieren from "./main_components/Frieren";
+import Frieren from "./main_components/MangaPage";
 import {useThemeState} from "../contexts/ThemeContext";
-import Recipes from "./main_components/Recipes";
+import Recipes from "./main_components/RecipePage";
 
 
 export default function Main() {

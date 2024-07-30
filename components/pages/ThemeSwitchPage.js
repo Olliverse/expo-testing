@@ -3,7 +3,7 @@ import {StyleSheet, Switch, Text, View} from 'react-native';
 import {dark, light} from "../../styles/colors";
 import {useThemeState} from "../../contexts/ThemeContext";
 
-export default function ThemeSwitch() {
+export default function ThemeSwitchPage() {
     const {theme, setTheme} = useThemeState();
     const [darkMode, setDarkMode] = useState(theme === dark);
 
