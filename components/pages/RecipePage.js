@@ -4,8 +4,10 @@ import {useThemeState} from "../../contexts/ThemeContext";
 import {Card, Paragraph, Title} from 'react-native-paper';
 import recipeData from "../../data/RecipeData";
 import {FlatList} from "react-native-gesture-handler";
+import {useI18NState} from "../../contexts/I18NContext";
 
 export default function RecipePage() {
+    const {i18n} = useI18NState()
     const {theme} = useThemeState();
 
     const recipeItem = ({item}) => (
@@ -21,7 +23,7 @@ export default function RecipePage() {
     return (
         <View style={styles.container}>
             <Text style={[styles.title, {color: theme.text}]}>
-                Recipes (Card Use-case)
+                {i18n.t("recipes-title")}
             </Text>
             <FlatList
                 data={recipeData}

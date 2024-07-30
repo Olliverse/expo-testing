@@ -2,8 +2,10 @@ import React from 'react';
 import {StyleSheet, Text, View} from "react-native";
 import {useThemeState} from "../../contexts/ThemeContext";
 import LinkButton from "../custom/LinkButton";
+import {useI18NState} from "../../contexts/I18NContext";
 
 export default function RouterPage() {
+    const {i18n} = useI18NState()
     const {theme} = useThemeState();
 
     return (
@@ -14,9 +16,10 @@ export default function RouterPage() {
                 marginBottom: 20,
                 color: theme.text,
             }}>Expo Router Test</Text>
-            <LinkButton label={'Route to /test'} path={'/test'}/>
-            <LinkButton label={'Route to /recursive'} path={'/recursive'} style={{marginBottom: 15, marginTop: 15}}/>
-            <LinkButton label={'Route to your user page'} path={'/user'}/>
+            <LinkButton label={`${i18n.t("route-to")} /test`} path={'/test'}/>
+            <LinkButton label={`${i18n.t("route-to")} /recursive`} path={'/recursive'}
+                        style={{marginBottom: 15, marginTop: 15}}/>
+            <LinkButton label={i18n.t("route-user")} path={'/user'}/>
         </View>
     )
 };

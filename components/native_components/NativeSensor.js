@@ -4,8 +4,10 @@ import {Accelerometer} from 'expo-sensors';
 import {useThemeState} from '../../contexts/ThemeContext';
 import MiniButton from "../custom/MiniButton";
 import Button from "../custom/Button";
+import {useI18NState} from "../../contexts/I18NContext";
 
 export default function NativeSensor() {
+    const {i18n} = useI18NState()
     const {theme} = useThemeState();
 
     const [{x, y, z}, setData] = useState({
@@ -45,7 +47,7 @@ export default function NativeSensor() {
     return (
         <View style={styles.container}>
             <Text style={[styles.title, {color: theme.text}]}>
-                Information from Native Accelerometer API (expo-sensors):
+                {i18n.t("expo-sensors-info")}:
             </Text>
             <View style={styles.dataContainer}>
                 <View style={styles.dataRow}>
@@ -67,8 +69,8 @@ export default function NativeSensor() {
                             iconName={subscription ? 'pause' : 'play'}/>
                 </View>
                 <View style={styles.buttonRow}>
-                    <MiniButton label={'Slow'} callback={_slow} style={{width: "40%"}}/>
-                    <MiniButton label={'Fast'} callback={_fast} style={{width: "40%"}}/>
+                    <MiniButton label={i18n.t("slow")} callback={_slow} style={{width: "40%"}}/>
+                    <MiniButton label={i18n.t("fast")} callback={_fast} style={{width: "40%"}}/>
                 </View>
             </View>
         </View>

@@ -5,15 +5,19 @@ import {useThemeState} from "../../contexts/ThemeContext";
 import {getAuth, signOut} from "firebase/auth";
 import {useUser} from "../../contexts/UserContext";
 import Button from "../../components/custom/Button";
+import {useI18NState} from "../../contexts/I18NContext";
 
 export default function User() {
-    const navigation = useNavigation();
-    const {user} = useLocalSearchParams();
-    const auth = getAuth();
+    const {i18n} = useI18NState()
+    const {theme} = useThemeState();
     // Weil der Varname "user" belegt ist, müssen folgende 2 lines verwendet werden
     const currentUser = useUser().user;
     const setUser = useUser().setUser;
-    const {theme} = useThemeState();
+
+    const navigation = useNavigation();
+    const {user} = useLocalSearchParams();
+    const auth = getAuth();
+
 
     useEffect(() => {
         navigation.setOptions({
@@ -36,20 +40,20 @@ export default function User() {
         <View style={[styles.mainContainer, {backgroundColor: theme.background}]}>
             <View style={[styles.textBox, {borderColor: theme.primary3}]}>
                 <Text style={[styles.text, {color: theme.text, fontWeight: "bold"}]}>
-                    Route is: {user} -&gt wegen UID
+                    {i18n.t("route-is")}: {user} {i18n.t("due-to-uid")}
                 </Text>
                 <Text style={[styles.text, {color: theme.text}]}>
-                    Name: {currentUser ? currentUser.username : "nicht gesetzt"}
+                    Name: {currentUser ? currentUser.username : i18n.t("not-set")}
                 </Text>
                 <Text style={[styles.text, {color: theme.text}]}>
-                    email: {currentUser ? currentUser.email : "nicht gesetzt"}
+                    email: {currentUser ? currentUser.email : i18n.t("not-set")}
                 </Text>
             </View>
 
             <Button label="Logout" callback={signOutClicked} style={{background: theme.secondary1}}/>
 
             <Link pop href="/" style={[styles.link, {color: theme.secondary1}]}>
-                Back to Start
+                {i18n.t("route-start")}
             </Link>
         </View>
     )

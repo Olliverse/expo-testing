@@ -12,14 +12,14 @@ export default function HomeLayout() {
     require("../firebaseConfig");
 
     return (
-        <ThemeProvider>
-            <I18NProvider>
+        <I18NProvider>
+            <ThemeProvider>
                 <AuthProvider>
                     <CurrentPageProvider>
                         <App/>
                     </CurrentPageProvider>
                 </AuthProvider>
-            </I18NProvider>
-        </ThemeProvider>
+            </ThemeProvider>
+        </I18NProvider>
     )
 }

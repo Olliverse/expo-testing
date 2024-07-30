@@ -1,13 +1,15 @@
 import {StyleSheet, Text, View} from "react-native";
 import {Link, useLocalSearchParams} from "expo-router";
 import {useThemeState} from "../../contexts/ThemeContext";
+import {useI18NState} from "../../contexts/I18NContext";
 
 export default function Hallo() {
-    const {hallo} = useLocalSearchParams();
+    const {i18n} = useI18NState()
     const {theme} = useThemeState();
+    const {hallo} = useLocalSearchParams();
 
     const testData = [
-        {id: 1, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."},
+        {id: 1, text: i18n.t("your-ads")},
         {id: 2, text: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},
         {
             id: 3,
@@ -29,7 +31,7 @@ export default function Hallo() {
             </View>
 
             <Link pop href="/" style={styles.link}>
-                back to start
+                {i18n.t("route-start")}
             </Link>
         </View>
     );

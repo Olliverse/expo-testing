@@ -5,6 +5,7 @@ import {FlatList} from "react-native-gesture-handler";
 import {useThemeState} from "../../contexts/ThemeContext";
 import MiniButton from "../custom/MiniButton";
 import FullWidthImage from "../custom/FullWidthImage";
+import {useI18NState} from "../../contexts/I18NContext";
 
 function formatWithLeadingZeros(number, length) {
     return number.toString().padStart(length, '0');
@@ -12,6 +13,7 @@ function formatWithLeadingZeros(number, length) {
 
 
 export default function MangaPage() {
+    const {i18n} = useI18NState()
     const {theme} = useThemeState();
     const flatListRef = useRef();
     const [chapter, setChapter] = useState(111);
@@ -52,7 +54,7 @@ export default function MangaPage() {
     return (
         <View style={styles.container}>
             <Text style={[styles.title, {color: theme.text}]}>
-                Manga Reader (List Use-Case)
+                {i18n.t("manga-reader")}
             </Text>
             <View style={{display: "flex", flexDirection: 'row', alignItems: "center"}}>
                 <MiniButton iconName={"backward"} callback={() => setChapter(chapter - 1)}></MiniButton>

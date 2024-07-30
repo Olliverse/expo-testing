@@ -6,8 +6,8 @@ import {useI18NState} from "../../contexts/I18NContext";
 
 export default function SwitchPage() {
     const {theme, setTheme} = useThemeState();
-    const [darkMode, setDarkMode] = useState(theme === dark);
     const {language, setLanguage, i18n} = useI18NState();
+    const [darkMode, setDarkMode] = useState(theme === dark);
 
     const toggleDarkMode = () => {
         setDarkMode(!darkMode);
@@ -27,7 +27,7 @@ export default function SwitchPage() {
         <View style={styles.mainContainer}>
             <View style={[styles.switchContainer, {backgroundColor: theme.primary2}]}>
                 <Text style={[styles.label, {color: theme.text}]}>
-                    {darkMode ? "Dark" : "Light"} Mode
+                    {darkMode ? i18n.t("dark") : i18n.t("light")}
                 </Text>
                 <Switch
                     trackColor={{false: theme.secondary2, true: theme.primary3}}

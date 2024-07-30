@@ -1,35 +1,29 @@
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import * as Application from 'expo-application';
 import {useThemeState} from '../../contexts/ThemeContext';
-import {useEffect, useState} from "react";
+import {useI18NState} from "../../contexts/I18NContext";
 
 
 export default function NativeAppInfo() {
+    const {i18n} = useI18NState()
     const {theme} = useThemeState();
-    const [deviceId, setDeviceId] = useState("undefined")
-
-    useEffect(() => {
-        loadPlatformSpecificText()
-    }, []);
+    const deviceId = loadPlatformSpecificText()
 
     async function loadPlatformSpecificText() {
         switch (Platform.OS) {
             case 'ios':
-                setDeviceId(await Application.getIosIdForVendorAsync());
-                break;
+                return Application.getIosIdForVendorAsync();
             case 'android':
-                setDeviceId(Application.getAndroidId());
-                break;
+                return Application.getAndroidId()
             default:
-                setDeviceId("undefined");
-                break;
+                return i18n.t("undefined")
         }
     }
 
     return (
         <View style={styles.container}>
             <Text style={[styles.title, {color: theme.text}]}>
-                Information from Native API (expo-application):
+                {i18n.t("expo-application-info")}:
             </Text>
             <View style={styles.textContainer}>
                 <View style={styles.row}>

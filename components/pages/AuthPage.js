@@ -4,8 +4,10 @@ import {createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithE
 import {useThemeState} from "../../contexts/ThemeContext";
 import {useUser} from "../../contexts/UserContext";
 import Button from "../custom/Button";
+import {useI18NState} from "../../contexts/I18NContext";
 
 export default function AuthScreen() {
+    const {i18n} = useI18NState()
     const {theme} = useThemeState();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -56,15 +58,15 @@ export default function AuthScreen() {
             />
             <TextInput
                 style={[styles.input, {borderColor: theme.borderColor}]}
-                placeholder="Password"
+                placeholder={i18n.t("password")}
                 onChangeText={setPassword}
                 value={password}
                 secureTextEntry
             />
-            <Button label="Sign Up" callback={handleSignUp}/>
-            <Button label="Sign In" callback={handleSignIn}/>
+            <Button label={i18n.t("sign-up")} callback={handleSignUp}/>
+            <Button label={i18n.t("sign-in")} callback={handleSignIn}/>
             <Text style={[styles.underlinedText, {color: theme.primary1}]} onPress={bypassLogin}>
-                Don't feel like logging in right now?
+                {i18n.t("bypass-login")}
             </Text>
         </View>
     );

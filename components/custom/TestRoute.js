@@ -5,11 +5,13 @@ import Button from "./Button";
 import {useThemeState} from "../../contexts/ThemeContext";
 import {useCurrentPageState} from "../../contexts/PageContext";
 import PropTypes from "prop-types";
+import {useI18NState} from "../../contexts/I18NContext";
 
 export default function TestRoute({defaultRoute = "test/idk"}) {
-    const [newRoute, setNewRoute] = useState(defaultRoute);
+    const {i18n} = useI18NState()
     const {theme} = useThemeState();
     const {resetCurrentPage} = useCurrentPageState();
+    const [newRoute, setNewRoute] = useState(defaultRoute);
 
     function routeTo(newRoute) {
         router.push(newRoute);
@@ -31,10 +33,12 @@ export default function TestRoute({defaultRoute = "test/idk"}) {
                 onChangeText={setNewRoute}
                 value={newRoute}
             />
-            <Button label={`Route to ${newRoute}`} style={styles.button} callback={() => routeTo(newRoute)}
+            <Button label={`${i18n.t("route-to")} + ${newRoute}`} style={styles.button}
+                    callback={() => routeTo(newRoute)}
                     iconName="arrow-right"/>
-            <Button label={"Route back"} style={styles.button} callback={() => routeBack()} iconName="arrow-left"/>
-            <Button label={"Go Home"} style={styles.button} callback={() => routeHome("/")} iconName="home"/>
+            <Button label={i18n.t("route-back")} style={styles.button} callback={() => routeBack()}
+                    iconName="arrow-left"/>
+            <Button label={i18n.t("route-home")} style={styles.button} callback={() => routeHome("/")} iconName="home"/>
         </View>
     );
 }
