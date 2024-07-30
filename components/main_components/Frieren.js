@@ -27,7 +27,7 @@ export default function Frieren() {
 
     const getAsset = (chapter, page) => {
         try {
-            const url = `https://scans.lastation.us/manga/Sousou-no-Frieren/${formatWithLeadingZeros(chapter,4)}-${formatWithLeadingZeros(page, 3)}.png`
+            const url = `https://scans.lastation.us/manga/Sousou-no-Frieren/${formatWithLeadingZeros(chapter, 4)}-${formatWithLeadingZeros(page, 3)}.png`
             return Asset.fromURI(url);
         } catch (e) {
             console.log(`Error when loading asset with chapter ${chapter} and page ${page}`, e)
@@ -51,8 +51,8 @@ export default function Frieren() {
 
     return (
         <View style={styles.container}>
-            <Text style={[styles.heading, {color: theme.text}]}>
-                Frieren
+            <Text style={[styles.title, {color: theme.text}]}>
+                Manga Reader (List Use-Case)
             </Text>
             <View style={{display: "flex", flexDirection: 'row', alignItems: "center"}}>
                 <MiniButton iconName={"backward"} callback={() => setChapter(chapter - 1)}></MiniButton>
@@ -77,9 +77,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-    heading: {
-        fontSize: 36,
+    title: {
+        fontSize: 24,
         fontWeight: 'bold',
-        marginTop: 35
-    },
+        textAlign: 'center',
+        marginBottom: 15,
+    }
 });

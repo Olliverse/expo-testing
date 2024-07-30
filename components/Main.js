@@ -9,6 +9,7 @@ import NativeAppInfo from "./native_components/NativeAppInfo";
 import RouterPage from "./main_components/RouterPage";
 import Frieren from "./main_components/Frieren";
 import {useThemeState} from "../contexts/ThemeContext";
+import Recipes from "./main_components/Recipes";
 
 
 export default function Main() {
@@ -24,6 +25,10 @@ export default function Main() {
 
                 <View style={styles.innerContainer}>
                     <NativeImageSelection/>
+                </View>
+
+                <View style={styles.innerContainer}>
+                    <Recipes/>
                 </View>
 
                 <View style={styles.innerContainer}>

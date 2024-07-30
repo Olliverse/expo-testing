@@ -39,7 +39,7 @@ export default function NativeImageSelection() {
     return (
         <>
             <Text style={[styles.title, {color: theme.text}]}>Image display and selection (expo-image-picker)</Text>
-            <ImageViewer img={selectedImage ? selectedImage : require('../../assets/images/main_image.png')}/>
+            <ImageViewer img={selectedImage ? selectedImage : require('../../assets/main_image.png')}/>
             <Button label="Choose a photo" callback={choosePhotoClicked} style={{marginTop: 20}}/>
             <Button label="Use this photo" callback={useThisPhotoClicked} style={{marginTop: 5}}/>
         </>
