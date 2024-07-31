@@ -39,4 +39,4 @@ yarn-error.*
 
 # Prebuild files
 android
-firebaseConfig.js
+firebaseSecrets.js
