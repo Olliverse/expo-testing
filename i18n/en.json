@@ -28,5 +28,15 @@
   "hidden-page": "Hey, you just found a hidden page!",
   "your-ads": "This is where your advertisement could be!",
   "theme-selection": "Select a theme",
-  "language-selection": "Select your Language"
+  "language-selection": "Select your Language",
+  "add-password": "Add password",
+  "save-password": "Save password",
+  "saved-passwords": "Saved passwords",
+  "service-name": "Service name",
+  "error-login-required": "You need to login to view saved passwords",
+  "error-fetch": "Failed to fetch password entries",
+  "error-add-pw": "Failed to add password entry",
+  "error-fill-both": "Please fill in both fields",
+  "success-add-pw": "Password entry added successfully!",
+  "password-manager-login-required": "You need to be logged in to use the PW-Manager"
 }

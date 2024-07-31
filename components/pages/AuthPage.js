@@ -45,7 +45,7 @@ export default function AuthScreen() {
     };
 
     const bypassLogin = () => {
-        setUser({id: Math.random(), email: 'random@example.com'});
+        setUser({id: undefined, email: 'random@example.com'});
     };
 
     return (

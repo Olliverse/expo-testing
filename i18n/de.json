@@ -28,5 +28,15 @@
   "hidden-page": "Hey, Sie haben gerade eine versteckte Seite gefunden!",
   "your-ads": "Hier könnte Ihre Werbung stehen!",
   "theme-selection": "Wähle Sie ein Theme",
-  "language-selection": "Wählen Sie eine Sprache"
+  "language-selection": "Wählen Sie eine Sprache",
+  "add-password": "Passwort hinzufügen",
+  "save-password": "Passwort speichern",
+  "saved-passwords": "Gespeicherte Passwörter",
+  "service-name": "Servicename",
+  "error-login-required": "Sie müssen sich einloggen, um gespeicherte Passwörter anzuzeigen",
+  "error-fetch": "Fehler beim Abrufen der Passworteinträge",
+  "error-add-pw": "Fehler beim Hinzufügen des Passworteintrags",
+  "error-fill-both": "Bitte füllen Sie beide Felder aus",
+  "success-add-pw": "Passworteintrag erfolgreich hinzugefügt!",
+  "password-manager-login-required": "Du musst eingeloggt sein, um den PW-Manager zu benutzen."
 }
