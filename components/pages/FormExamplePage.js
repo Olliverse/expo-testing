@@ -74,13 +74,13 @@ export default function FormExamplePage() {
                 <Text style={[styles.header, {color: theme.text}]}>PW-Manager (Form Use-Case)</Text>
                 <Text style={[styles.title, {color: theme.text}]}>{i18n.t('add-password')}</Text>
                 <TextInput
-                    style={[styles.input, {borderColor: theme.borderColor}]}
+                    style={[styles.input, {borderColor: theme.borderColor, color: theme.text}]}
                     placeholder={i18n.t('service-name')}
                     value={service}
                     onChangeText={setService}
                 />
                 <TextInput
-                    style={[styles.input, {borderColor: theme.borderColor}]}
+                    style={[styles.input, {borderColor: theme.borderColor, color: theme.text}]}
                     placeholder={i18n.t('password')}
                     value={password}
                     onChangeText={setPassword}
