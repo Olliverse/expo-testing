@@ -37,6 +37,7 @@ yarn-error.*
 # IDE
 .idea/
 
-# Prebuild files
-android
-firebaseSecrets.js
+# Build files
+android/
+ios/
+secrets/
