@@ -1,6 +1,6 @@
 {
-  "name": "expo-testing-rwu",
-  "version": "1.0.2",
+  "name": "expo-pa",
+  "version": "1.0.3",
   "main": "expo-router/entry",
   "scripts": {
     "start": "expo start",
@@ -10,7 +10,8 @@
     "build-i": "eas build --platform ios --local",
     "prebuild": "expo prebuild",
     "ios": "expo run:ios",
-    "android": "expo run:android --no-build-cache -d",
+    "android": "expo run:android",
+    "android-2": "expo run:android --no-build-cache -d",
     "web": "expo start --web"
   },
   "dependencies": {
