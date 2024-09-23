@@ -1,12 +1,12 @@
 {
-  "name": "expo-pa",
+  "name": "expo-testing-rwu",
   "version": "1.0.3",
   "main": "expo-router/entry",
   "scripts": {
     "start": "expo start",
     "tunnel": "expo start --tunnel",
     "build": "eas build",
-    "build-a": "eas build --platform android --local",
+    "bduild-a": "eas build --platform android --local",
     "build-i": "eas build --platform ios --local",
     "prebuild": "expo prebuild",
     "ios": "expo run:ios",
