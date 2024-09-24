@@ -19,7 +19,6 @@ export default function RouterPage() {
             <LinkButton label={`${i18n.t("route-to")} /test`} path={'/test'}/>
             <LinkButton label={`${i18n.t("route-to")} /recursive`} path={'/recursive'}
                         style={{marginBottom: 15, marginTop: 15}}/>
-            <LinkButton label={i18n.t("route-user")} path={'/user'}/>
         </View>
     )
 };

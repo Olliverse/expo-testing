@@ -6,7 +6,7 @@ import MiniButton from "../custom/MiniButton";
 import Button from "../custom/Button";
 import {useI18NState} from "../../contexts/I18NContext";
 
-export default function NativeSensor() {
+export default function  NativeSensor() {
     const {i18n} = useI18NState()
     const {theme} = useThemeState();
 

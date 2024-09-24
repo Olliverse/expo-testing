@@ -10,7 +10,6 @@ import MangaPage from "./pages/MangaPage";
 import {useThemeState} from "../contexts/ThemeContext";
 import RecipePage from "./pages/RecipePage";
 import SwitchPage from "./pages/SwitchPage";
-import FormExamplePage from "./pages/FormExamplePage";
 
 
 export default function Main() {
@@ -30,10 +29,6 @@ export default function Main() {
 
                 <View style={styles.innerContainer}>
                     <RecipePage/>
-                </View>
-
-                <View style={styles.innerContainer}>
-                    <FormExamplePage/>
                 </View>
 
                 <View style={styles.innerContainer}>
