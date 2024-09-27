@@ -5,6 +5,7 @@
   "image-info": "Bilder darstellen und wählen (expo-image-picker)",
   "slow": "langsam",
   "fast": "schnell",
+  "router-desc": "Hier wird der Router von Expo ausprobiert",
   "route-to": "Route zu",
   "route-back": "Route zurück",
   "route-home": "Zurück zum Start",

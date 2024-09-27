@@ -16,6 +16,7 @@ export default function RouterPage() {
                 marginBottom: 20,
                 color: theme.text,
             }}>Expo Router Test</Text>
+            <Text style={{marginBottom: 20}}>{i18n.t("router-desc")}</Text>
             <LinkButton label={`${i18n.t("route-to")} /test`} path={'/test'}/>
             <LinkButton label={`${i18n.t("route-to")} /recursive`} path={'/recursive'}
                         style={{marginBottom: 15, marginTop: 15}}/>
